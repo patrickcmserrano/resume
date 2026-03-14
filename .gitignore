@@ -1,0 +1,28 @@
+# LaTeX Aux Files
+*.aux
+*.bbl
+*.blg
+*.brf
+*.dict
+*.dvi
+*.fdb_latexmk
+*.fls
+*.glg
+*.glo
+*.gls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.snm
+*.synctex.gz
+*.toc
+*.xdv
+
+# Editor / OS defaults
+.DS_Store
+.vscode/
