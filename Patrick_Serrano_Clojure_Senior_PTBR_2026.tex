@@ -19,7 +19,7 @@
 Engenheiro de Software Sênior com mais de 7 anos de experiência, especializado no ecossistema \textbf{Clojure/ClojureScript} e construção de sistemas financeiros de alta disponibilidade. Expertise profunda em arquiteturas orientadas a dados --- Datomic, Pathom 3, EQL --- e no design de pipelines de processamento em larga escala para o setor de pagamentos. Formação sólida em Programação Funcional proporciona um modelo mental orientado à imutabilidade, consistência transacional e tolerância a falhas, aplicado diretamente em plataformas de pagamento multi-adquirente com mais de 25 integrações ativas em produção.
 
 \section{Habilidades}
-\cvitem{Ecossistema Clojure}{Pathom 3, Datomic (Datalog), Malli, Reitit, Pedestal, Onyx, Hodur, Fulcro, Fulcro RAD, Reagent, shadow-cljs}
+\cvitem{Ecossistema Clojure}{Pathom 3, Datomic (Datalog), Clara Rules, Malli, Reitit, Pedestal, Onyx, Hodur, Fulcro, Fulcro RAD, Reagent, shadow-cljs}
 \cvitem{Linguagens}{Clojure, ClojureScript, Golang, TypeScript, Python}
 \cvitem{Banco de Dados}{Datomic, PostgreSQL, Redis, DynamoDB}
 \cvitem{Arquitetura}{Microservices, Event-Driven, CQRS, Clean Architecture, Polylith, ETL Pipelines}
@@ -50,9 +50,10 @@ Responsabilidades
     \item Desenvolvimento de dashboards administrativos full-stack em \textbf{ClojureScript + Fulcro RAD}: telas de gestão de pedidos, cobranças e workflows de aprovação de pagamento, visualização de grafos de estado (GoJS) e relatórios analíticos interativos com integração direta ao Datomic via Datalog;
     \item Implementação de adaptador \textbf{WhatsApp Business (WABA)} para fluxo automatizado de recuperação de carrinhos abandonados, conectando a inteligência de dados do pipeline Summon com mensageria em tempo real;
     \item Gestão de infraestrutura na AWS via \textbf{Pulumi} (infra-as-code), configuração de parâmetros de produção via SSM e pipelines de deploy automatizados para ambientes críticos;
-    \item Processamento assíncrono de jobs financeiros com \textbf{Onyx}; modelagem de esquemas Datomic baseados em fatos imutáveis com consultas Datalog para auditabilidade completa do histórico transacional.
+    \item Processamento assíncrono de jobs financeiros com \textbf{Onyx}; modelagem de esquemas Datomic baseados em fatos imutáveis com consultas Datalog para auditabilidade completa do histórico transacional;
+    \item Integração do motor de regras \textbf{Clara Rules} ao pipeline Datalogx do Octopus Pay, desacoplando o módulo \texttt{octopus.datalogx.clara} de dependências legadas e conectando o engine de forward-chaining à derivação de atributos calculados nas transações Datomic.
 \end{itemize}
-Tecnologias: Clojure, ClojureScript, Datomic, Pathom 3, Fulcro RAD, Reitit, Pedestal, Malli, Onyx, Hodur, AWS, Pulumi
+Tecnologias: Clojure, ClojureScript, Datomic, Pathom 3, Clara Rules, Fulcro RAD, Reitit, Pedestal, Malli, Onyx, Hodur, AWS, Pulumi
 }
 
 \cventry{2020 -- 2021}{Plataforma de Marketplace B2B (Zougue MPMS)}{}{}{}{%
@@ -61,12 +62,13 @@ Responsabilidades
 \begin{itemize}
     \item Implementação de endpoints de integração com \textbf{VTEX}: simulação de carrinho, sugestão de SKU, atualização de preço/estoque, informar dados de nota fiscal, enviar autorização de despacho e cancelamento de pedido;
     \item Modelagem de esquemas \textbf{Datomic} para os domínios centrais do marketplace --- \texttt{order}, \texttt{seller}, \texttt{doca}, \texttt{estoque}, \texttt{contrato}, \texttt{item-x-categoria} --- e implementação de \textbf{Pathom resolvers} para queries multi-seller e multi-marketplace com atributos calculados;
+    \item Escrita de regras de forward-chaining com \textbf{Clara Rules} para derivação de atributos em Datomic: classificação de workflows por tipo de entidade (\texttt{order}, \texttt{suggestion}, \texttt{entrega-vtex}, \texttt{item-x-categoria}), roteamento de atores externos por workflow e cálculo de atributos financeiros de faturamento e price-tags de item-pedido;
     \item Construção do \textbf{sistema de importação de catálogo via planilha (xlsx)}: operações de criar/atualizar/deletar item com validação de entorno, contratos \textbf{Malli} por operação e geração de relatório de erros transacional;
     \item Desenvolvimento do portal administrativo em ClojureScript com framework \textbf{Fulcro}: telas de listagem e detalhamento de pedidos com filtros de status e workflow, tela de catálogos virtuais com filtros por status de item;
     \item Construção do portal Marketplace multi-tenant com identidade visual por host (white-label), autenticação via magic link e embed de \textbf{Metabase} customizado por cliente para relatórios analíticos;
     \item Implementação da API NAPP padronizada (\textbf{Swagger/OpenAPI}) para integração com plataformas externas.
 \end{itemize}
-Tecnologias: Clojure, ClojureScript, Fulcro, Pathom, Datomic, Malli, VTEX, Pedestal, Metabase
+Tecnologias: Clojure, ClojureScript, Fulcro, Pathom, Datomic, Clara Rules, Malli, VTEX, Pedestal, Metabase
 }
 
 \cventry{2019}{Plataforma Imobiliária}{}{}{}{%
