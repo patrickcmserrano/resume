@@ -1,0 +1,99 @@
+\documentclass[10pt,a4paper,sans]{moderncv}
+
+\moderncvstyle{classic}
+\moderncvcolor{blue}
+
+\usepackage[scale=0.90]{geometry}
+\setlength{\hintscolumnwidth}{2.3cm}
+
+\name{Patrick Serrano}{}
+\title{Senior Clojure Software Engineer}
+\email{patrickcmserrano@gmail.com}
+\social[linkedin]{patrickcmserrano}
+\social[github]{patrickcmserrano}
+
+\begin{document}
+\makecvtitle
+
+\section{Summary}
+Senior Software Engineer with 7+ years of experience, specialized in the \textbf{Clojure/ClojureScript} ecosystem and high-availability financial systems. Deep expertise in data-oriented architectures --- Datomic, Pathom 3, EQL --- and large-scale data pipeline design for the payments industry. A strong Functional Programming background provides a mental model oriented toward immutability, transactional consistency, and fault tolerance, applied directly to multi-acquirer payment platforms managing 25+ active production integrations.
+
+\section{Skills}
+\cvitem{Clojure Ecosystem}{Pathom 3, Datomic (Datalog), Malli, Reitit, Pedestal, Onyx, Hodur, Fulcro, Fulcro RAD, Reagent, shadow-cljs}
+\cvitem{Languages}{Clojure, ClojureScript, Golang, TypeScript, Python}
+\cvitem{Databases}{Datomic, PostgreSQL, Redis, DynamoDB}
+\cvitem{Architecture}{Microservices, Event-Driven, CQRS, Clean Architecture, Polylith, ETL Pipelines}
+\cvitem{Integrations}{Gateways: Adyen, Cielo, eRede, Pagar.me, Mercado Pago, Getnet, Tuna, Unico; Anti-Fraud: ClearSale, Konduto; E-commerce: VTEX, Loja Integrada}
+\cvitem{Infra / DevOps}{AWS (SQS, Lambda, ECS, SSM), Docker, Pulumi, CI/CD, Github Actions}
+
+\section{Professional Experience}
+
+\cventry{Jul 2025 -- Present}{Quantitative Trading System (Ark Engine)}{}{}{}{%
+Proprietary high-performance trading engine focused on low latency, automated decision-making, and absolute financial data resilience.\newline{}
+Highlights
+\begin{itemize}
+    \item Architected and developed from scratch a high-frequency trading engine, making critical decisions on concurrency, transactional consistency, and fault tolerance in a live financial production environment;
+    \item Strategic migration of critical modules from Python to Golang, achieving dramatic latency reduction in real-time market event processing;
+    \item Design and implementation of event-driven messaging pipelines with NATS JetStream, ensuring exactly-once delivery and immutability of financial records.
+\end{itemize}
+Technologies: Golang, Python, NATS JetStream, TypeScript, Docker, Event-Driven Architecture
+}
+
+\cventry{2022 -- 2024}{Payment Engine (Octopus Pay)}{}{}{}{%
+High-availability multi-acquirer financial platform for payment orchestration, integrating multiple payment gateways, e-commerce platforms, and anti-fraud systems, with data consistency guaranteed by an immutable database (Datomic).\newline{}
+Highlights
+\begin{itemize}
+    \item Designed and implemented a library of \textbf{25+ adapters} integrating payment gateways (Adyen, Cielo, eRede, Pagar.me, Mercado Pago, Getnet, Tuna, Unico), e-commerce platforms (VTEX, Loja Integrada, Sinatra), and anti-fraud systems (ClearSale, Konduto) --- each with bidirectional mapping via a canonical internal model (EQL/Pathom), full unit test coverage, and homologation in controlled environments;
+    \item Conceived and built the \textbf{Summon} framework: a Clojure ETL pipeline engine for ingesting, enriching, and analytically processing millions of financial events, supporting extensible and decoupled orchestration for multiple e-commerce clients;
+    \item Led the \textbf{Pathom 2 → Pathom 3 migration}, evolving the decoupled resolver-graph engine for real-time derivation of hundreds of computed attributes via EQL, improving performance and reducing code complexity;
+    \item Built public and internal APIs with \textbf{Reitit + Pedestal}, including contract validation via \textbf{Malli}, automatic Swagger/OpenAPI documentation, and circuit-breaker contingency patterns for resilience against external actor failures;
+    \item Developed full-stack admin dashboards in \textbf{ClojureScript + Fulcro RAD}: order and charge management screens, payment approval workflows, state-graph visualization (GoJS), and interactive analytical reports integrated directly with Datomic via Datalog;
+    \item Implemented a \textbf{WhatsApp Business (WABA)} adapter for an automated abandoned-cart recovery flow, connecting Summon pipeline intelligence with real-time messaging;
+    \item Managed AWS infrastructure via \textbf{Pulumi} (infrastructure-as-code), production parameter configuration via SSM, and automated deployment pipelines for critical environments;
+    \item Asynchronous financial job processing with \textbf{Onyx}; Datomic schema modeling based on immutable facts with Datalog queries for a full transactional audit trail.
+\end{itemize}
+Technologies: Clojure, ClojureScript, Datomic, Pathom 3, Fulcro RAD, Reitit, Pedestal, Malli, Onyx, Hodur, AWS, Pulumi
+}
+
+\cventry{2020 -- 2021}{E-commerce Platform (High-Scale CMS)}{}{}{}{%
+Content management platform for structuring and displaying complex product catalogs under high-traffic load.\newline{}
+Highlights
+\begin{itemize}
+    \item Full-stack development of reactive, responsive interfaces using ClojureScript and React, applying componentization and state management design patterns;
+    \item Built reactive dashboards for real-time metadata and media asset management with WebSocket updates;
+    \item AWS infrastructure optimization with auto-scaling to absorb demand peaks without performance or availability degradation.
+\end{itemize}
+Technologies: ClojureScript, React, TypeScript, Node.js, AWS, REST APIs
+}
+
+\cventry{2019}{Real Estate Platform}{}{}{}{%
+Web and mobile application for decentralized advertising, negotiation, and sale of real estate.\newline{}
+Highlights
+\begin{itemize}
+    \item Full-stack development of a mobile and web application from scratch using ClojureScript and Fulcro, focusing on rendering performance and user experience;
+    \item Modeled efficient communication flows between clients and real estate agents.
+\end{itemize}
+Technologies: ClojureScript, Fulcro, React Native
+}
+
+\cventry{2018}{FinTech Project (Payment Gateway)}{}{}{}{%
+Web application for a payment gateway focused on efficient and secure transactions.\newline{}
+Highlights
+\begin{itemize}
+    \item Developed the application front-end with ClojureScript/Fulcro and shipped new transaction features;
+    \item First integrations with financial systems, building a foundation of security and payment flow traceability.
+\end{itemize}
+Technologies: ClojureScript, Fulcro, REST APIs
+}
+
+\section{Education}
+\cventry{2024 -- Present}{Bachelor's in Software Engineering}{Descomplica Faculdade Digital}{}{}{}
+\cventry{2015 -- 2018}{Bachelor's in Physics}{Universidade Federal Fluminense}{}{}{}
+
+\section{Languages}
+\cvitemwithcomment{Portuguese}{Native}{}
+\cvitemwithcomment{English}{Upper-Intermediate}{}
+\cvitemwithcomment{German}{Basic}{}
+\cvitemwithcomment{Spanish}{Basic}{}
+
+\end{document}
