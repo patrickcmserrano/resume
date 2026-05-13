@@ -55,15 +55,18 @@ Highlights
 Technologies: Clojure, ClojureScript, Datomic, Pathom 3, Fulcro RAD, Reitit, Pedestal, Malli, Onyx, Hodur, AWS, Pulumi
 }
 
-\cventry{2020 -- 2021}{E-commerce Platform (High-Scale CMS)}{}{}{}{%
-Content management platform for structuring and displaying complex product catalogs under high-traffic load.\newline{}
+\cventry{2020 -- 2021}{B2B Marketplace Platform (MPMS + Zougue)}{}{}{}{%
+Full-featured marketplace management platform for sellers and operators, covering product catalogs, order management, inventory, delivery tracking, and a white-label portal per client --- integrated with VTEX and built full-stack in Clojure/ClojureScript.\newline{}
 Highlights
 \begin{itemize}
-    \item Full-stack development of reactive, responsive interfaces using ClojureScript and React, applying componentization and state management design patterns;
-    \item Built reactive dashboards for real-time metadata and media asset management with WebSocket updates;
-    \item AWS infrastructure optimization with auto-scaling to absorb demand peaks without performance or availability degradation.
+    \item Implemented \textbf{VTEX} integration endpoints: cart simulation, SKU suggestion, price/stock update, invoice data, dispatch authorization, and order cancellation;
+    \item Modeled \textbf{Datomic} schemas for the core marketplace domains --- \texttt{order}, \texttt{seller}, \texttt{doca}, \texttt{estoque}, \texttt{contrato}, \texttt{item-x-categoria} --- and implemented \textbf{Pathom resolvers} for multi-seller, multi-marketplace queries with computed attributes;
+    \item Built a \textbf{spreadsheet (xlsx) catalog import system}: create/update/delete item operations with entorno validation, per-operation \textbf{Malli} contracts, and transactional error reporting;
+    \item Developed the \textbf{Zougue admin portal} in ClojureScript with \textbf{Ingá/Fulcro}: order listing and detail screens with status filters and workflow views, virtual catalog screens with item-status filtering, \texttt{item-pedido} component with cancellation modal, and \texttt{catalogo-x-seller} screens;
+    \item Built a multi-tenant \textbf{Marketplace Portal} with per-host visual identity (white-label), magic-link authentication, and per-client \textbf{Metabase} embed for analytical reporting;
+    \item Delivered a standardized NAPP \textbf{Swagger/OpenAPI} integration API for external platforms, including item-stock, item-price, and item integrator-data endpoints.
 \end{itemize}
-Technologies: ClojureScript, React, TypeScript, Node.js, AWS, REST APIs
+Technologies: Clojure, ClojureScript, Fulcro, Pathom, Datomic, Malli, VTEX, Pedestal, Metabase
 }
 
 \cventry{2019}{Real Estate Platform}{}{}{}{%
