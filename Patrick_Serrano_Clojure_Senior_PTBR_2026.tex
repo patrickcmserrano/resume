@@ -18,7 +18,7 @@
 \makecvtitle
 
 \section{Resumo}
-Engenheiro de Software Sênior Fullstack com mais de 7 anos de experiência, especializado no ecossistema \textbf{Clojure/ClojureScript} e construção de sistemas financeiros de alta disponibilidade. Atua tanto no backend --- arquiteturas orientadas a dados com Datomic, Pathom 3 e EQL, pipelines de processamento em larga escala --- quanto no frontend, com entregas completas em Fulcro RAD, Reagent e ClojureScript. Formação sólida em Programação Funcional proporciona um modelo mental orientado à imutabilidade, consistência transacional e tolerância a falhas. Histórico em ambiente de consultoria com comunicação direta com clientes e colaboração em equipes multidisciplinares, entregando soluções web completas para múltiplos domínios de negócio.
+Engenheiro de Software Sênior Fullstack com mais de 7 anos de experiência, especializado no ecossistema \textbf{Clojure/ClojureScript} e construção de sistemas financeiros de alta disponibilidade. Especializado em arquiteturas orientadas a dados --- Datomic, Pathom 3, EQL --- com capacidade de entrega fullstack: do pipeline de processamento ao componente Fulcro na tela. Formação sólida em Programação Funcional proporciona um modelo mental orientado à imutabilidade, consistência transacional e tolerância a falhas. Histórico em ambiente de consultoria com comunicação direta com clientes e colaboração em equipes multidisciplinares, entregando soluções web completas para múltiplos domínios de negócio.
 
 \section{Habilidades}
 \cvitem{Ecossistema Clojure}{Pathom 3, Datomic (Datalog), Clara Rules, Malli, Reitit, Pedestal, Onyx, Fulcro, Fulcro RAD, Reagent, shadow-cljs}
@@ -31,34 +31,20 @@ Engenheiro de Software Sênior Fullstack com mais de 7 anos de experiência, esp
 
 \section{Experiência Profissional}
 
-\cventry{Jul 2025 -- Atual}{Sistema de Trading Quantitativo (Ark Engine)}{Projeto Independente}{}{}{%
-Motor de análise de mercado e trading autônomo em tempo real, processando eventos via arquitetura event-driven com NATS JetStream.\newline{}
+\cventry{2025 -- Atual}{Infraestrutura de Trading Quantitativo (Ark Engine)}{Projeto Independente}{}{}{%
+Infraestrutura de trading algorítmico com auditabilidade bitemporal, iniciada em Clojure/XTDB e evoluída para Golang/NATS por custo operacional, preservando os princípios funcionais da arquitetura original.\newline{}
 Responsabilidades
 \begin{itemize}
-    \item Arquitetura e desenvolvimento do zero de motor de trading com máquina de estados finitos (FSM) para controle determinístico de posição, concorrência thread-safe e controle atômico de risco;
-    \item Resolução de race conditions críticos por redesign arquitetural: migração de topologia fan-out para event chaining com snapshots imutáveis (AnalyzedEvent), eliminando leituras de estado obsoleto e divergência entre backtest e produção;
-    \item Design e implementação de pipelines event-driven com NATS JetStream, garantindo exactly-once delivery; latência end-to-end medida de $\sim$43\,µs do dado de mercado à decisão de trading (FractalEngine $\sim$35\,µs + FSM $\sim$1\,µs + serialização);
-    \item Migração de módulos críticos de Python para Golang com redução de 70--78\% no footprint de memória via arquitetura IPC;
-    \item Desenvolvimento de framework de backtesting determinístico com validação por golden datasets, garantindo fidelidade matemática entre ambiente de teste e produção;
-    \item Desenvolvimento do Nexus Terminal, dashboard web em tempo real para monitoramento e controle do motor de trading: visualização de sinais, posições abertas e métricas de performance, construído em Svelte com comunicação via WebSocket.
+    \item Design de infraestrutura de persistência bitemporal com XTDB (Datalog): Valid Time separado de Transaction Time, eliminando lookahead bias em backtests por propriedade estrutural;
+    \item Desenvolvimento do Risk Guard como componente Polylith isolado: toda ordem exige RiskToken assinado pelo guard --- a estratégia não tem acesso direto ao executor, tornando bypass de risco estruturalmente impossível;
+    \item Implementação de pipeline de ingestão com Redis Streams e Consumer Groups: particionamento, consumer groups, exactly-once processing --- padrões equivalentes a Kafka;
+    \item Redesign arquitetural de Clojure/XTDB para Golang/NATS JetStream preservando os princípios funcionais: migração de topologia fan-out para event chaining com snapshots imutáveis (AnalyzedEvent), eliminando race conditions e divergência entre backtest e produção; latência end-to-end medida de $\sim$43\,µs;
+    \item Desenvolvimento do Nexus Terminal, dashboard em tempo real em Svelte com WebSocket para monitoramento de sinais, posições e métricas de performance.
 \end{itemize}
-Tecnologias: Golang, Python, NATS JetStream, TypeScript, Svelte, Docker, Event-Driven Architecture
+Tecnologias: Clojure, XTDB, Redis Streams, Malli, Polylith, Golang, NATS JetStream, Svelte
 }
 
-\cventry{2024 -- 2025}{Motor de Trading Quantitativo (Ark Engine --- Clojure)}{Projeto Independente}{}{}{%
-Infraestrutura de trading algorítmico distribuída com auditabilidade bitemporal, construída em Clojure com arquitetura Polylith.\newline{}
-Responsabilidades
-\begin{itemize}
-    \item Design e implementação de infraestrutura de persistência bitemporal com XTDB (Datalog): Valid Time separado de Transaction Time, eliminando lookahead bias em backtests por propriedade estrutural;
-    \item Desenvolvimento do Risk Guard como componente isolado (Polylith): toda ordem exige RiskToken assinado, impedindo que estratégias verifiquem seu próprio risco --- SRP aplicado a capital;
-    \item Implementação de pipeline de ingestão de dados de mercado com Redis Streams e Consumer Groups (padrões equivalentes a Kafka: particionamento, consumer groups, exactly-once processing);
-    \item Desenvolvimento de 4 conectores de exchange (Binance, Bitget, Bybit, Kraken) normalizados para schema canônico via Malli;
-    \item Validação do Risk Guard com testes generativos (test.check): qualquer ordem concebível verificada dentro dos limites constitucionais do sistema.
-\end{itemize}
-Tecnologias: Clojure, XTDB, Redis Streams, Malli, Polylith, Aleph
-}
-
-\cventry{2022 -- 2025}{Motor de Pagamentos (Octopus Pay)}{Consultoria em Software}{}{}{%
+\cventry{2022 -- Jul 2025}{Motor de Pagamentos (Octopus Pay)}{Consultoria em Software}{}{}{%
 Plataforma multi-adquirente de alta disponibilidade para orquestração de pagamentos com 25+ integrações ativas.\newline{}
 Responsabilidades
 \begin{itemize}%
@@ -87,23 +73,12 @@ Responsabilidades
 Tecnologias: Clojure, ClojureScript, Fulcro, Pathom, Datomic, Clara Rules, VTEX, Metabase
 }
 
-\cventry{2019}{Plataforma Imobiliária}{Consultoria em Software}{}{}{%
-Aplicativo web e mobile para publicidade descentralizada, negociação e venda de imóveis.\newline{}
-Responsabilidades
+\cventry{2018 -- 2019}{Projetos Iniciais (Plataforma Imobiliária · Gateway de Pagamentos)}{Consultoria em Software}{}{}{%
 \begin{itemize}
-    \item Desenvolvimento fullstack de aplicação mobile e web do zero com ClojureScript e Fulcro, com foco em performance de renderização e experiência do usuário.
+    \item Desenvolvimento fullstack de aplicação mobile e web do zero em ClojureScript/Fulcro com React Native (plataforma imobiliária);
+    \item Desenvolvimento de front-end e integrações com sistemas financeiros em ClojureScript/Fulcro para gateway de pagamentos.
 \end{itemize}
-Tecnologias: ClojureScript, Fulcro, React Native
-}
-
-\cventry{2018}{Projeto FinTech (Gateway de Pagamentos)}{Consultoria em Software}{}{}{%
-Aplicação web para gateway de pagamentos.\newline{}
-Responsabilidades
-\begin{itemize}
-    \item Desenvolvimento do front-end da aplicação com ClojureScript/Fulcro e lançamento de novas funcionalidades de transação;
-    \item Desenvolvimento de integrações com sistemas financeiros, estabelecendo fundamentos de segurança e rastreabilidade de fluxo de pagamento.
-\end{itemize}
-Tecnologias: ClojureScript, Fulcro, REST APIs
+Tecnologias: ClojureScript, Fulcro, React Native, REST APIs
 }
 
 \section{Formação Acadêmica}
