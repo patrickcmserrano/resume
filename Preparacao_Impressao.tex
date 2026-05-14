@@ -1,0 +1,81 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[margin=1cm]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}[\titlerule]
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
+\titlespacing*{\section}{0pt}{10pt}{5pt}
+\titlespacing*{\subsection}{0pt}{7pt}{3pt}
+
+\setlist[itemize]{noitemsep, topsep=0pt, leftmargin=15pt}
+\setlist[enumerate]{noitemsep, topsep=0pt, leftmargin=15pt}
+
+\begin{document}
+
+\begin{center}
+    {\huge \textbf{Preparação — Entrevista Buzzlabs}}
+\end{center}
+
+\begin{multicols}{2}
+
+\section*{Parte 1: Estratégia}
+\textbf{Objetivo:} Mostrar que resolve problemas e comunica bem. \\
+\textbf{Vantagem:} 7 anos de Clojure em consultoria (raro). \\
+\textbf{Medos do entrevistador:} Entrega? Comunicação? Integração? \\
+\textbf{Tom:} Confiante, honesto, curioso.
+
+\section*{Parte 2: Percepção do Currículo}
+\textbf{Projeto Independente:} Trabalho deliberado e técnico. \\
+\textbf{XTDB:} "Datomic bitemporal (JUXT)". \\
+\textbf{Go no currículo:} Benchmark de performance/custo. \\
+\textbf{Octopus Pay:} Fullstack completo (Pathom, Clara, Fulcro).
+
+\section*{Parte 3: Narrativa de 90s}
+Abre com Clojure/Fullstack/Consultoria. Explica o Ark Engine como laboratório técnico. Termina com desejo de voltar para consultoria em equipe.
+
+\section*{Parte 4: Respostas Técnicas}
+\textbf{Clojure:} Foco em dados e imutabilidade. \\
+\textbf{Pathom 3:} Desacoplamento e resolução declarativa. \\
+\textbf{Datomic:} Auditabilidade e as-of queries. \\
+\textbf{Clara Rules:} Lógica financeira declarativa. \\
+\textbf{Fulcro RAD:} Produtividade via schemas. \\
+\textbf{Polylith:} Isolamento estrutural de domínios. \\
+\textbf{XTDB:} Bitemporalidade vs Transaction Time. \\
+\textbf{Kafka Gap:} Domínio de padrões (NATS/Redis Streams).
+
+\section*{Parte 5: Comportamental (STAR)}
+\textbf{Problema difícil:} Migração Pathom 2->3. \\
+\textbf{Discordância:} Defender Datomic por risco de negócio. \\
+\textbf{Cliente errado:} Separar resultado de solução técnica.
+
+\section*{Parte 6: Perguntas Difíceis}
+\textbf{Ark Engine lucra?} Infra sólida, faltam dados de microestrutura. \\
+\textbf{Por que saiu?} Foco integral no Ark Engine. \\
+\textbf{Pode trabalhar em equipe?} 7 anos de consultoria provam que sim.
+
+\section*{Parte 7: Perguntas para o Entrevistador}
+- Desafio técnico atual? \\
+- Ciclo típico de projeto? \\
+- Onboarding de novos devs? \\
+- Espaço para Open Source?
+
+\section*{Parte 8: Conceitos para Revisar}
+- Resolvers Pathom, Queries Datalog. \\
+- Atom/Swap, Malli, core.async. \\
+- Transducers, nil-safety.
+
+\section*{Parte 9: Checklist Final}
+- Testar áudio/câmera. \\
+- Declarar interesse no fim. \\
+- E-mail de follow-up em 24h.
+
+\end{multicols}
+
+\end{document}
