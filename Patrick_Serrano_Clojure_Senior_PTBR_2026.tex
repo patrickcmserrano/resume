@@ -3,11 +3,13 @@
 \moderncvstyle{classic}
 \moderncvcolor{blue}
 
-\usepackage[scale=0.90]{geometry}
-\setlength{\hintscolumnwidth}{2.3cm}
+\usepackage[scale=0.85]{geometry}
+\setlength{\hintscolumnwidth}{2.0cm}
+\usepackage{setspace}
+\setstretch{0.95}
 
 \name{Patrick Serrano}{}
-\title{Engenheiro de Software Clojure Sênior}
+\title{Engenheiro de Software Sênior Fullstack (Clojure · ClojureScript / Sistemas Financeiros)}
 \email{patrickcmserrano@gmail.com}
 \social[linkedin]{patrickcmserrano}
 \social[github]{patrickcmserrano}
@@ -16,77 +18,90 @@
 \makecvtitle
 
 \section{Resumo}
-Engenheiro de Software Sênior com mais de 7 anos de experiência, especializado no ecossistema \textbf{Clojure/ClojureScript} e construção de sistemas financeiros de alta disponibilidade. Expertise profunda em arquiteturas orientadas a dados --- Datomic, Pathom 3, EQL --- e no design de pipelines de processamento em larga escala para o setor de pagamentos. Formação sólida em Programação Funcional proporciona um modelo mental orientado à imutabilidade, consistência transacional e tolerância a falhas, aplicado diretamente em plataformas de pagamento multi-adquirente com mais de 25 integrações ativas em produção.
+Engenheiro de Software Sênior Fullstack com mais de 7 anos de experiência, especializado no ecossistema \textbf{Clojure/ClojureScript} e construção de sistemas financeiros de alta disponibilidade. Atua tanto no backend --- arquiteturas orientadas a dados com Datomic, Pathom 3 e EQL, pipelines de processamento em larga escala --- quanto no frontend, com entregas completas em Fulcro RAD, Reagent e ClojureScript. Formação sólida em Programação Funcional proporciona um modelo mental orientado à imutabilidade, consistência transacional e tolerância a falhas. Histórico em ambiente de consultoria com comunicação direta com clientes e colaboração em equipes multidisciplinares, entregando soluções web completas para múltiplos domínios de negócio.
 
 \section{Habilidades}
-\cvitem{Ecossistema Clojure}{Pathom 3, Datomic (Datalog), Clara Rules, Malli, Reitit, Pedestal, Onyx, Hodur, Fulcro, Fulcro RAD, Reagent, shadow-cljs}
-\cvitem{Linguagens}{Clojure, ClojureScript, Golang, TypeScript, Python}
-\cvitem{Banco de Dados}{Datomic, PostgreSQL, Redis, DynamoDB}
+\cvitem{Ecossistema Clojure}{Pathom 3, Datomic (Datalog), Clara Rules, Malli, Reitit, Pedestal, Onyx, Fulcro, Fulcro RAD, Reagent, shadow-cljs}
+\cvitem{Linguagens}{Clojure, ClojureScript, Golang, TypeScript, Svelte, Python}
+\cvitem{Banco de Dados}{Datomic, PostgreSQL, Redis}
 \cvitem{Arquitetura}{Microservices, Event-Driven, CQRS, Clean Architecture, Polylith, ETL Pipelines}
 \cvitem{Integrações}{Gateways: Adyen, Cielo, eRede, Pagar.me, Mercado Pago, Getnet, Tuna, Unico; Antifraude: ClearSale, Konduto; E-commerce: VTEX, Loja Integrada}
+\cvitem{Mensageria}{NATS JetStream, Onyx; Kafka (familiaridade teórica, experiência com sistemas análogos)}
 \cvitem{Infra / DevOps}{AWS (SQS, Lambda, ECS, SSM), Docker, Pulumi, CI/CD, Github Actions}
 
 \section{Experiência Profissional}
 
-\cventry{Jul 2025 -- Atual}{Sistema de Trading Quantitativo (Ark Engine)}{}{}{}{%
-Motor de negociação proprietário de altíssima performance focado em baixa latência, tomada de decisão automatizada e resiliência absoluta de dados financeiros.\newline{}
+\cventry{Jul 2025 -- Atual}{Sistema de Trading Quantitativo (Ark Engine)}{Projeto Independente}{}{}{%
+Motor de análise de mercado e trading autônomo em tempo real, processando eventos via arquitetura event-driven com NATS JetStream.\newline{}
 Responsabilidades
 \begin{itemize}
-    \item Arquitetura e desenvolvimento do zero de um motor de trading de alta frequência, tomando decisões críticas sobre concorrência, consistência transacional e tolerância a falhas em ambiente de produção financeira real;
-    \item Migração estratégica de módulos críticos de Python para Golang, alcançando redução drástica de latência no processamento de eventos de mercado em tempo real;
-    \item Design e implementação de pipelines de mensageria orientados a eventos com NATS JetStream, garantindo entrega exatamente-uma-vez (exactly-once delivery) e imutabilidade dos registros financeiros.
+    \item Arquitetura e desenvolvimento do zero de motor de trading com máquina de estados finitos (FSM) para controle determinístico de posição, concorrência thread-safe e controle atômico de risco;
+    \item Resolução de race conditions críticos por redesign arquitetural: migração de topologia fan-out para event chaining com snapshots imutáveis (AnalyzedEvent), eliminando leituras de estado obsoleto e divergência entre backtest e produção;
+    \item Design e implementação de pipelines event-driven com NATS JetStream, garantindo exactly-once delivery; latência end-to-end medida de $\sim$43\,µs do dado de mercado à decisão de trading (FractalEngine $\sim$35\,µs + FSM $\sim$1\,µs + serialização);
+    \item Migração de módulos críticos de Python para Golang com redução de 70--78\% no footprint de memória via arquitetura IPC;
+    \item Desenvolvimento de framework de backtesting determinístico com validação por golden datasets, garantindo fidelidade matemática entre ambiente de teste e produção;
+    \item Desenvolvimento do Nexus Terminal, dashboard web em tempo real para monitoramento e controle do motor de trading: visualização de sinais, posições abertas e métricas de performance, construído em Svelte com comunicação via WebSocket.
 \end{itemize}
-Tecnologias: Golang, Python, NATS JetStream, TypeScript, Docker, Event-Driven Architecture
+Tecnologias: Golang, Python, NATS JetStream, TypeScript, Svelte, Docker, Event-Driven Architecture
 }
 
-\cventry{2022 -- 2024}{Motor de Pagamentos (Octopus Pay)}{}{}{}{%
-Plataforma financeira multi-adquirente de alta disponibilidade para orquestração de pagamentos, com integração a múltiplos gateways, plataformas de e-commerce e sistemas antifraude, operando com consistência de dados garantida por banco imutável (Datomic).\newline{}
+\cventry{2024 -- 2025}{Motor de Trading Quantitativo (Ark Engine --- Clojure)}{Projeto Independente}{}{}{%
+Infraestrutura de trading algorítmico distribuída com auditabilidade bitemporal, construída em Clojure com arquitetura Polylith.\newline{}
 Responsabilidades
 \begin{itemize}
-    \item Design e implementação de uma biblioteca de \textbf{25+ adaptadores} para integração com gateways de pagamento (Adyen, Cielo, eRede, Pagar.me, Mercado Pago, Getnet, Tuna, Unico), plataformas de e-commerce (VTEX, Loja Integrada, Sinatra) e sistemas antifraude (ClearSale, Konduto) --- cada um com mapeamento bidirecional via modelo canônico interno (EQL/Pathom), cobertura de testes unitários e homologação em ambiente controlado;
-    \item Motor de pipelines ETL em Clojure para ingestão, enriquecimento e processamento analítico de milhões de eventos financeiros, suportando orquestração extensível e desacoplada para múltiplos clientes de e-commerce;
-    \item Liderança da migração de \textbf{Pathom 2 → Pathom 3}, evoluindo a engine de grafos de resolvers desacoplados para derivação de centenas de atributos calculados em tempo real via EQL, melhorando performance e reduzindo complexidade do código;
-    \item Implementação de APIs públicas e internas com \textbf{Reitit + Pedestal}, incluindo validação de contratos com \textbf{Malli}, documentação automática via Swagger/OpenAPI e design de padrões de contingência (circuit breaker) para resiliência em falhas de atores externos;
-    \item Desenvolvimento de dashboards administrativos full-stack em \textbf{ClojureScript + Fulcro RAD}: telas de gestão de pedidos, cobranças e workflows de aprovação de pagamento, visualização de grafos de estado (GoJS) e relatórios analíticos interativos com integração direta ao Datomic via Datalog;
-    \item Implementação de adaptador \textbf{WhatsApp Business (WABA)} para fluxo automatizado de recuperação de carrinhos abandonados, conectando a inteligência de dados do pipeline Summon com mensageria em tempo real;
-    \item Gestão de infraestrutura na AWS via \textbf{Pulumi} (infra-as-code), configuração de parâmetros de produção via SSM e pipelines de deploy automatizados para ambientes críticos;
-    \item Processamento assíncrono de jobs financeiros com \textbf{Onyx}; modelagem de esquemas Datomic baseados em fatos imutáveis com consultas Datalog para auditabilidade completa do histórico transacional;
-    \item Integração do motor de regras \textbf{Clara Rules} ao pipeline Datalogx do Octopus Pay, desacoplando o módulo \texttt{octopus.datalogx.clara} de dependências legadas e conectando o engine de forward-chaining à derivação de atributos calculados nas transações Datomic.
+    \item Design e implementação de infraestrutura de persistência bitemporal com XTDB (Datalog): Valid Time separado de Transaction Time, eliminando lookahead bias em backtests por propriedade estrutural;
+    \item Desenvolvimento do Risk Guard como componente isolado (Polylith): toda ordem exige RiskToken assinado, impedindo que estratégias verifiquem seu próprio risco --- SRP aplicado a capital;
+    \item Implementação de pipeline de ingestão de dados de mercado com Redis Streams e Consumer Groups (padrões equivalentes a Kafka: particionamento, consumer groups, exactly-once processing);
+    \item Desenvolvimento de 4 conectores de exchange (Binance, Bitget, Bybit, Kraken) normalizados para schema canônico via Malli;
+    \item Validação do Risk Guard com testes generativos (test.check): qualquer ordem concebível verificada dentro dos limites constitucionais do sistema.
 \end{itemize}
-Tecnologias: Clojure, ClojureScript, Datomic, Pathom 3, Clara Rules, Fulcro RAD, Reitit, Pedestal, Malli, Onyx, Hodur, AWS, Pulumi
+Tecnologias: Clojure, XTDB, Redis Streams, Malli, Polylith, Aleph
 }
 
-\cventry{2020 -- 2021}{Plataforma de Marketplace B2B (Zougue MPMS)}{}{}{}{%
-Plataforma completa de gestão de marketplace para sellers e operadores, cobrindo catálogo de produtos, gestão de pedidos, estoque, entregas e portal white-label por cliente --- integrada com VTEX e construída full-stack em Clojure/ClojureScript.\newline{}
+\cventry{2022 -- 2025}{Motor de Pagamentos (Octopus Pay)}{Consultoria em Software}{}{}{%
+Plataforma multi-adquirente de alta disponibilidade para orquestração de pagamentos com 25+ integrações ativas.\newline{}
 Responsabilidades
-\begin{itemize}
-    \item Implementação de endpoints de integração com \textbf{VTEX}: simulação de carrinho, sugestão de SKU, atualização de preço/estoque, informar dados de nota fiscal, enviar autorização de despacho e cancelamento de pedido;
-    \item Modelagem de esquemas \textbf{Datomic} para os domínios centrais do marketplace --- \texttt{order}, \texttt{seller}, \texttt{doca}, \texttt{estoque}, \texttt{contrato}, \texttt{item-x-categoria} --- e implementação de \textbf{Pathom resolvers} para queries multi-seller e multi-marketplace com atributos calculados;
-    \item Escrita de regras de forward-chaining com \textbf{Clara Rules} para derivação de atributos em Datomic: classificação de workflows por tipo de entidade (\texttt{order}, \texttt{suggestion}, \texttt{entrega-vtex}, \texttt{item-x-categoria}), roteamento de atores externos por workflow e cálculo de atributos financeiros de faturamento e price-tags de item-pedido;
-    \item Construção do \textbf{sistema de importação de catálogo via planilha (xlsx)}: operações de criar/atualizar/deletar item com validação de entorno, contratos \textbf{Malli} por operação e geração de relatório de erros transacional;
-    \item Desenvolvimento do portal administrativo em ClojureScript com framework \textbf{Fulcro}: telas de listagem e detalhamento de pedidos com filtros de status e workflow, tela de catálogos virtuais com filtros por status de item;
-    \item Construção do portal Marketplace multi-tenant com identidade visual por host (white-label), autenticação via magic link e embed de \textbf{Metabase} customizado por cliente para relatórios analíticos;
-    \item Implementação da API NAPP padronizada (\textbf{Swagger/OpenAPI}) para integração com plataformas externas.
+\begin{itemize}%
+    \item Design e implementação de 25+ adaptadores para gateways (Adyen, Cielo, eRede, Pagar.me, Mercado Pago, Getnet, Tuna, Unico), plataformas (VTEX, Loja Integrada) e antifraude (ClearSale, Konduto) via modelo canônico EQL/Pathom;
+    \item Desenvolvimento de motor ETL para ingestão e processamento de milhões de eventos financeiros com orquestração extensível (Onyx);
+    \item Liderança da migração Pathom 2 → Pathom 3 e derivação de atributos calculados em tempo real com EQL;
+    \item Desenvolvimento de APIs REST com Reitit + Pedestal, validação Malli, Swagger/OpenAPI e padrões de resiliência (circuit breaker);
+    \item Desenvolvimento de dashboards administrativos full-stack em ClojureScript + Fulcro RAD com integração Datomic/Datalog;
+    \item Modelagem de regras de forward-chaining com Clara Rules para cálculos financeiros e workflows automatizados;
+    \item Gestão de infraestrutura AWS via Pulumi (infra-as-code), configuração via SSM e pipelines de deploy automatizados.
 \end{itemize}
-Tecnologias: Clojure, ClojureScript, Fulcro, Pathom, Datomic, Clara Rules, Malli, VTEX, Pedestal, Metabase
+Tecnologias: Clojure, ClojureScript, Datomic, Pathom 3, Clara Rules, Fulcro RAD, Reitit, Pedestal, AWS, Pulumi
 }
 
-\cventry{2019}{Plataforma Imobiliária}{}{}{}{%
+\cventry{2020 -- 2022}{Marketplace B2B (Zougue MPMS)}{Consultoria em Software}{}{}{%
+Gestão de marketplace integrada com VTEX para sellers e operadores.\newline{}
+Responsabilidades
+\begin{itemize}%
+    \item Desenvolvimento de endpoints de integração VTEX: simulação de carrinho, SKU, preço/estoque, notas fiscais, autorização de despacho;
+    \item Modelagem de esquemas Datomic para domínios centrais (order, seller, doca, estoque, contrato) com Pathom resolvers multi-seller;
+    \item Implementação de regras Clara Rules para workflows, roteamento e cálculos de faturamento/price-tags;
+    \item Desenvolvimento de sistema de importação de catálogo via XLSX com validação Malli e relatórios de erro;
+    \item Desenvolvimento de portal administrativo em ClojureScript/Fulcro com filtros de workflow e listagem de pedidos;
+    \item Desenvolvimento de portal Marketplace multi-tenant com white-label, autenticação magic link e Metabase integrado.
+\end{itemize}
+Tecnologias: Clojure, ClojureScript, Fulcro, Pathom, Datomic, Clara Rules, VTEX, Metabase
+}
+
+\cventry{2019}{Plataforma Imobiliária}{Consultoria em Software}{}{}{%
 Aplicativo web e mobile para publicidade descentralizada, negociação e venda de imóveis.\newline{}
 Responsabilidades
 \begin{itemize}
-    \item Desenvolvimento fullstack de aplicação mobile e web do zero com ClojureScript e Fulcro, com foco em performance de renderização e experiência do usuário;
-    \item Modelagem de fluxos de comunicação eficientes entre clientes e corretores de imóveis.
+    \item Desenvolvimento fullstack de aplicação mobile e web do zero com ClojureScript e Fulcro, com foco em performance de renderização e experiência do usuário.
 \end{itemize}
 Tecnologias: ClojureScript, Fulcro, React Native
 }
 
-\cventry{2018}{Projeto FinTech (Gateway de Pagamentos)}{}{}{}{%
-Aplicação web para um gateway de pagamentos focada em transações eficientes e seguras.\newline{}
+\cventry{2018}{Projeto FinTech (Gateway de Pagamentos)}{Consultoria em Software}{}{}{%
+Aplicação web para gateway de pagamentos.\newline{}
 Responsabilidades
 \begin{itemize}
     \item Desenvolvimento do front-end da aplicação com ClojureScript/Fulcro e lançamento de novas funcionalidades de transação;
-    \item Primeiras integrações com sistemas financeiros, consolidando fundamentos de segurança e rastreabilidade de fluxo de pagamento.
+    \item Desenvolvimento de integrações com sistemas financeiros, estabelecendo fundamentos de segurança e rastreabilidade de fluxo de pagamento.
 \end{itemize}
 Tecnologias: ClojureScript, Fulcro, REST APIs
 }
@@ -97,7 +112,7 @@ Tecnologias: ClojureScript, Fulcro, REST APIs
 
 \section{Idiomas}
 \cvitemwithcomment{Português}{Nativo}{}
-\cvitemwithcomment{Inglês}{Intermediário-Avançado}{}
+\cvitemwithcomment{Inglês}{Avançado}{}
 \cvitemwithcomment{Alemão}{Básico}{}
 \cvitemwithcomment{Espanhol}{Básico}{}
 

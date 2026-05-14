@@ -1,0 +1,33 @@
+\documentclass[10pt,a4paper,sans]{moderncv}
+
+\moderncvstyle{classic}
+\moderncvcolor{blue}
+
+\usepackage[scale=0.85]{geometry}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+
+\name{Patrick Serrano}{}
+\email{patrickcmserrano@gmail.com}
+\social[linkedin]{patrickcmserrano}
+\social[github]{patrickcmserrano}
+
+\begin{document}
+\makecvtitle
+
+\vspace{-1em}
+\recipient{Buzzlabs}{careers@buzzlabs.com.br}
+\date{\today}
+\opening{Prezado time da Buzzlabs,}
+\closing{Fico à disposição para uma conversa,}
+\makelettertitle
+
+Tenho mais de 7 anos de experiência construindo sistemas financeiros em Clojure/ClojureScript --- plataformas de pagamento multi-adquirente, marketplaces B2B, pipelines de processamento de eventos em larga escala, e interfaces administrativas completas em Fulcro RAD. Trabalho fullstack por escolha: o mesmo modelo mental funcional que torna o backend auditável e tolerante a falhas --- imutabilidade, Datomic, Pathom/EQL --- aplica-se diretamente ao frontend quando a stack é ClojureScript. Em todos os projetos do meu currículo entreguei as duas pontas, do schema Datomic ao componente na tela.
+
+Meu projeto pessoal mais recente, o Ark Engine, teve duas versões. A primeira foi em Clojure: XTDB para persistência bitemporal de trades e snapshots de decisão (Valid Time separado de Transaction Time --- o mesmo modelo mental do Datomic, aplicado a auditabilidade financeira), Redis Streams com Consumer Groups como pipeline de ingestão equivalente a Kafka, Risk Guard como componente Polylith isolado com testes generativos via test.check. A segunda versão foi reescrita em Go --- não por limitação técnica da stack Clojure, mas por custo operacional de cloud: XTDB em produção tem custo de infraestrutura que não era viável para um projeto independente. Os mesmos princípios migraram: snapshots imutáveis, FSM determinístico, pipeline event-driven com exactly-once delivery. A linguagem mudou; o modelo mental não.
+
+A Buzzlabs me interessa pelo modelo de consultoria: trabalhar em domínios diferentes, entregar soluções completas, comunicar decisões técnicas para clientes, operar com autonomia dentro de uma equipe que valoriza qualidade. É o ambiente em que trabalhei nos últimos 7 anos --- cada projeto no meu currículo foi entregue nesse contexto, do backend ao frontend. Sobre Kafka: não tenho experiência em produção, mas trabalhei com Onyx e NATS JetStream cobrindo os mesmos padrões de streaming distribuído, e é uma lacuna que tenho interesse direto em fechar. Estou disponível para uma conversa quando for conveniente para vocês.
+
+\makeletterclosing
+
+\end{document}
