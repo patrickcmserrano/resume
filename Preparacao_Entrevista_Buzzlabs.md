@@ -43,6 +43,12 @@ Antes de qualquer entrevista, alguém vai ler duas páginas sobre você e formar
 
 ---
 
+**Sobre a Indicação (Leandro):**
+*Isso é um trunfo forte de credibilidade.*
+→ Na primeira oportunidade natural, mencione: "Acompanho o trabalho da Buzzlabs há um tempo e o Leandro me recomendou fortemente a cultura da empresa. Quando vi o alinhamento da stack, fez todo sentido me candidatar." Isso estabelece "social proof" imediata.
+
+---
+
 **Ao ver XTDB:**
 *"Nunca ouvi falar. É confiável? É relevante?"*
 
@@ -60,7 +66,7 @@ Antes de qualquer entrevista, alguém vai ler duas páginas sobre você e formar
 **Ao ver Go no currículo de um candidato Clojure:**
 *"Ele é realmente especialista em Clojure ou está se vendendo como tal?"*
 
-→ O currículo já está estruturado para responder isso: Ark Engine abre com XTDB/Polylith/Redis Streams antes de mencionar Go. Mas na entrevista, seja proativo — não espere a pergunta. Mencione a escolha Go como decisão de custo, não de preferência.
+→ O currículo já está estruturado para responder isso: Ark Engine abre com XTDB/Polylith/Redis Streams antes de mencionar Go. Na entrevista, posicione a versão em Go como um **benchmark deliberado**. "Quis validar até onde o modelo mental funcional de imutabilidade e snapshots (que Clojure facilita) poderia ser levado em termos de latência bruta (~43µs) e economia de infraestrutura. A conclusão foi que os princípios funcionais são a chave da estabilidade, independente da linguagem, mas que Clojure é a ferramenta ideal para a complexidade do negócio."
 
 ---
 
