@@ -44,7 +44,7 @@ Plataforma financeira multi-adquirente de alta disponibilidade para orquestraç�
 Responsabilidades
 \begin{itemize}
     \item Design e implementação de uma biblioteca de \textbf{25+ adaptadores} para integração com gateways de pagamento (Adyen, Cielo, eRede, Pagar.me, Mercado Pago, Getnet, Tuna, Unico), plataformas de e-commerce (VTEX, Loja Integrada, Sinatra) e sistemas antifraude (ClearSale, Konduto) --- cada um com mapeamento bidirecional via modelo canônico interno (EQL/Pathom), cobertura de testes unitários e homologação em ambiente controlado;
-    \item Idealização e construção do framework \textbf{Summon}: motor de pipelines ETL em Clojure para ingestão, enriquecimento e processamento analítico de milhões de eventos financeiros, suportando orquestração extensível e desacoplada para múltiplos clientes de e-commerce;
+    \item Motor de pipelines ETL em Clojure para ingestão, enriquecimento e processamento analítico de milhões de eventos financeiros, suportando orquestração extensível e desacoplada para múltiplos clientes de e-commerce;
     \item Liderança da migração de \textbf{Pathom 2 → Pathom 3}, evoluindo a engine de grafos de resolvers desacoplados para derivação de centenas de atributos calculados em tempo real via EQL, melhorando performance e reduzindo complexidade do código;
     \item Implementação de APIs públicas e internas com \textbf{Reitit + Pedestal}, incluindo validação de contratos com \textbf{Malli}, documentação automática via Swagger/OpenAPI e design de padrões de contingência (circuit breaker) para resiliência em falhas de atores externos;
     \item Desenvolvimento de dashboards administrativos full-stack em \textbf{ClojureScript + Fulcro RAD}: telas de gestão de pedidos, cobranças e workflows de aprovação de pagamento, visualização de grafos de estado (GoJS) e relatórios analíticos interativos com integração direta ao Datomic via Datalog;
@@ -55,16 +55,16 @@ Responsabilidades
 Tecnologias: Clojure, ClojureScript, Datomic, Pathom 3, Fulcro RAD, Reitit, Pedestal, Malli, Onyx, Hodur, AWS, Pulumi
 }
 
-\cventry{2020 -- 2021}{Plataforma de Marketplace B2B (MPMS + Zougue)}{}{}{}{%
+\cventry{2020 -- 2021}{Plataforma de Marketplace B2B (Zougue MPMS)}{}{}{}{%
 Plataforma completa de gestão de marketplace para sellers e operadores, cobrindo catálogo de produtos, gestão de pedidos, estoque, entregas e portal white-label por cliente --- integrada com VTEX e construída full-stack em Clojure/ClojureScript.\newline{}
 Responsabilidades
 \begin{itemize}
     \item Implementação de endpoints de integração com \textbf{VTEX}: simulação de carrinho, sugestão de SKU, atualização de preço/estoque, informar dados de nota fiscal, enviar autorização de despacho e cancelamento de pedido;
     \item Modelagem de esquemas \textbf{Datomic} para os domínios centrais do marketplace --- \texttt{order}, \texttt{seller}, \texttt{doca}, \texttt{estoque}, \texttt{contrato}, \texttt{item-x-categoria} --- e implementação de \textbf{Pathom resolvers} para queries multi-seller e multi-marketplace com atributos calculados;
     \item Construção do \textbf{sistema de importação de catálogo via planilha (xlsx)}: operações de criar/atualizar/deletar item com validação de entorno, contratos \textbf{Malli} por operação e geração de relatório de erros transacional;
-    \item Desenvolvimento do \textbf{portal administrativo (Zougue)} em ClojureScript com framework \textbf{Ingá/Fulcro}: telas de listagem e detalhamento de pedidos com filtros de status e workflow, tela de catálogos virtuais com filtros por status de item, componente \texttt{item-pedido} com modal de cancelamento e componente \texttt{catalogo-x-seller};
-    \item Construção do \textbf{Portal Marketplace} multi-tenant com identidade visual por host (white-label), autenticação via magic link e embed de \textbf{Metabase} customizado por cliente para relatórios analíticos;
-    \item Implementação da API NAPP padronizada (\textbf{Swagger/OpenAPI}) para integração com plataformas externas, incluindo endpoints de item-stock, item-price e item integrator-data.
+    \item Desenvolvimento do portal administrativo em ClojureScript com framework \textbf{Fulcro}: telas de listagem e detalhamento de pedidos com filtros de status e workflow, tela de catálogos virtuais com filtros por status de item;
+    \item Construção do portal Marketplace multi-tenant com identidade visual por host (white-label), autenticação via magic link e embed de \textbf{Metabase} customizado por cliente para relatórios analíticos;
+    \item Implementação da API NAPP padronizada (\textbf{Swagger/OpenAPI}) para integração com plataformas externas.
 \end{itemize}
 Tecnologias: Clojure, ClojureScript, Fulcro, Pathom, Datomic, Malli, VTEX, Pedestal, Metabase
 }
