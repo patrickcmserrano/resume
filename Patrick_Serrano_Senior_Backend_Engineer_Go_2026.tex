@@ -1,0 +1,85 @@
+\documentclass[10pt,a4paper,sans]{moderncv}
+
+\moderncvstyle{classic}
+\moderncvcolor{blue}
+
+\usepackage[scale=0.90]{geometry}
+\setlength{\hintscolumnwidth}{2.3cm}
+
+\name{Patrick Serrano}{}
+\title{Senior Backend Engineer (Golang | Data Infrastructure)}
+\email{patrickcmserrano@gmail.com}
+\social[linkedin]{patrickcmserrano}
+\social[github]{patrickcmserrano}
+
+\begin{document}
+\makecvtitle
+
+\section{Summary}
+Senior Backend Engineer with 7+ years of experience designing and operating high-throughput, low-latency financial systems and multi-tenant SaaS platforms. Expert in \textbf{Golang} and functional programming (Clojure), with a strong focus on event-driven architectures, distributed messaging (NATS JetStream), and bitemporal data infrastructure. Proven track record in building ultra-low latency engines ($\sim$43$\mu$s) and managing complex financial data pipelines with millions of daily events. Specialized in "dual-store" architectural patterns, ensuring strict transactional consistency alongside robust analytical processing.
+
+\section{Skills}
+\cvitem{Languages}{\textbf{Golang} (Concurrency, Low-Latency), Clojure, TypeScript, Python, SQL}
+\cvitem{Backend / Data}{NATS JetStream, Redis Streams, XTDB (Bitemporal), Datomic (Datalog), PostgreSQL, DynamoDB, Onyx, Clara Rules}
+\cvitem{Architecture}{High-Performance Computing, Event-Driven Architecture, Multi-tenant SaaS, CQRS, Polylith, ETL Pipelines, Exactly-once Processing}
+\cvitem{Infra / DevOps}{AWS (SQS, Lambda, ECS, SSM), Docker, Pulumi (IaC), CI/CD, Github Actions, Observability}
+\cvitem{Financial Tech}{Payment Gateways (Adyen, Cielo, eRede), Anti-Fraud (ClearSale, Konduto), Automated Trading Engines, Transactional Auditing}
+
+\section{Professional Experience}
+
+\cventry{Jul 2024 -- Present}{Lead Architect \& Developer (Ark Engine)}{Quantitative Trading Infrastructure}{}{}{%
+High-performance automated trading engine focused on ultra-low latency, bitemporal auditability, and absolute financial data resilience.\newline{}
+Highlights:
+\begin{itemize}
+    \item \textbf{High-Performance Go Migration:} Redesigned the core decision engine from Clojure/XTDB to Golang/NATS JetStream to achieve extreme latency benchmarks, resulting in an end-to-end event chaining latency of \textbf{$\sim$43$\mu$s};
+    \item \textbf{Concurrency \& Distributed Messaging:} Leveraged Go's concurrency model (goroutines, channels) and NATS JetStream to build a fan-out topology with immutable snapshots, eliminating race conditions in high-frequency trading;
+    \item \textbf{Bitemporal Persistence:} Implemented a "dual-store" pattern using XTDB to separate Valid Time from Transaction Time, structurally eliminating lookahead bias in backtesting and ensuring 100\% auditability of financial decisions;
+    \item \textbf{Exactly-Once Processing:} Designed event-driven pipelines with Redis Streams and NATS to guarantee atomic processing of market events across distributed consumer groups.
+\end{itemize}
+Technologies: Golang, NATS JetStream, Clojure, XTDB, Redis Streams, Docker, Event-Driven Architecture
+}
+
+\cventry{2022 -- 2024}{Senior Software Engineer (Octopus Pay)}{Multi-Tenant Payment SaaS}{}{}{%
+High-availability financial orchestration platform managing 25+ production integrations for e-commerce and payment gateways.\newline{}
+Highlights:
+\begin{itemize}
+    \item \textbf{Data Ingestion Engine:} Architected "Summon," a high-throughput ETL engine for ingesting, enriching, and processing millions of financial events daily with strict delivery guarantees and circuit-breaker patterns;
+    \item \textbf{Dual-Store Pattern:} Implemented a transactional-analytical architecture using Datomic (immutable log) and Pathom, allowing real-time derivation of hundreds of computed attributes via EQL/Datalog;
+    \item \textbf{Adapter Architecture:} Designed and maintained 25+ canonical adapters for major payment gateways (Adyen, Cielo, Pagar.me) and anti-fraud systems, ensuring 99.99\% uptime for critical financial flows;
+    \item \textbf{Infrastructure as Code:} Managed cloud resources via Pulumi (AWS) and automated deployment pipelines, ensuring consistent environments for high-stakes payment processing;
+    \item \textbf{Financial Logic:} Integrated forward-chaining rule engines (Clara Rules) to automate complex financial workflows and attribute derivation directly from transactional records.
+\end{itemize}
+Technologies: Clojure, Datomic, Pathom 3, Clara Rules, AWS, Pulumi, Reitit, Pedestal, Malli, Onyx
+}
+
+\cventry{2020 -- 2021}{Backend Engineer (Zougue / MPMS)}{B2B Marketplace Platform}{}{}{%
+Enterprise-grade marketplace management platform integrated with major e-commerce players.\newline{}
+Highlights:
+\begin{itemize}
+    \item \textbf{Integrations:} Built complex integration endpoints with VTEX for inventory, price, and order management, handling high-volume SKU updates and transactional synchronization;
+    \item \textbf{Data Modeling:} Designed multi-tenant Datomic schemas and Pathom resolvers to support multi-seller marketplace queries with real-time computed attributes;
+    \item \textbf{Automation:} Authored complex business rules for order routing and financial attribute computation using forward-chaining logic;
+    \item \textbf{Analytics:} Integrated Metabase for per-client analytical reporting, powered by Datalog queries against immutable data history.
+\end{itemize}
+Technologies: Clojure, Datomic, Pathom, Clara Rules, Malli, VTEX, Pedestal, Metabase
+}
+
+\cventry{2018 -- 2019}{Software Engineer (Real Estate \& Fintech)}{Startup Projects}{}{}{%
+\begin{itemize}
+    \item Developed full-stack applications from scratch, focusing on data consistency and secure communication flows for financial and real estate platforms;
+    \item Built initial integrations with financial systems, establishing a foundation in payment flow traceability and security best practices.
+\end{itemize}
+Technologies: Clojure, ClojureScript, Fulcro, React Native, REST APIs
+}
+
+\section{Education}
+\cventry{2024 -- Present}{Bachelor's in Software Engineering}{Descomplica Faculdade Digital}{}{}{}
+\cventry{2015 -- 2018}{Bachelor's in Physics}{Universidade Federal Fluminense}{}{}{}
+
+\section{Languages}
+\cvitemwithcomment{Portuguese}{Native}{}
+\cvitemwithcomment{English}{Advanced (Full Professional Fluency)}{}
+\cvitemwithcomment{German}{Basic}{}
+\cvitemwithcomment{Spanish}{Basic}{}
+
+\end{document}

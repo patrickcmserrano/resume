@@ -7,7 +7,7 @@
 
 Fala Leandro, tudo bem?
 
-O **Wallysson Oliveira** me indicou a vaga de Backend Clojure da Buzzlabs e, conhecendo a reputação técnica do time, fiquei muito interessado em me candidatar.
+O Wallysson Oliveira me indicou a vaga de Backend Clojure da Buzzlabs e, conhecendo a reputação técnica do time, fiquei muito interessado em me candidatar.
 
 Tenho 7 anos de experiência fullstack em Clojure/ClojureScript, com foco em sistemas financeiros e arquiteturas orientadas a dados (Datomic, Pathom, Fulcro). Recentemente, venho explorando bitemporalidade e sistemas de alta performance no meu projeto Ark Engine.
 

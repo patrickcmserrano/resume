@@ -3,79 +3,138 @@
 \usepackage[T1]{fontenc}
 \usepackage[brazil]{babel}
 \usepackage[margin=1cm]{geometry}
-\usepackage{titlesec}
 \usepackage{enumitem}
-\usepackage{multicol}
+\usepackage{titlesec}
 \usepackage{xcolor}
 \usepackage{hyperref}
+\usepackage{verbatim}
+
+% Ajuste de fontes e espaçamento para densidade
+\usepackage{setspace}
+\setstretch{0.9}
 
 \titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}[\titlerule]
 \titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
-\titlespacing*{\section}{0pt}{10pt}{5pt}
-\titlespacing*{\subsection}{0pt}{7pt}{3pt}
+\titlespacing*{\section}{0pt}{8pt}{4pt}
+\titlespacing*{\subsection}{0pt}{6pt}{2pt}
 
-\setlist[itemize]{noitemsep, topsep=0pt, leftmargin=15pt}
-\setlist[enumerate]{noitemsep, topsep=0pt, leftmargin=15pt}
+\setlist[itemize]{noitemsep, topsep=1pt, partopsep=0pt, parsep=0pt, leftmargin=15pt}
+\setlist[enumerate]{noitemsep, topsep=1pt, partopsep=0pt, parsep=0pt, leftmargin=15pt}
 
 \begin{document}
 
 \begin{center}
-    {\huge \textbf{Preparação — Entrevista Buzzlabs}}
+    {\huge \textbf{Preparação Completa — Entrevista Buzzlabs}}
 \end{center}
 
-\begin{multicols}{2}
+\section*{PARTE 1: ESTRATÉGIA}
 
-\section*{Parte 1: Estratégia}
-\textbf{Objetivo:} Mostrar que resolve problemas e comunica bem. \\
-\textbf{Vantagem:} 7 anos de Clojure em consultoria (raro). \\
-\textbf{Medos do entrevistador:} Entrega? Comunicação? Integração? \\
-\textbf{Tom:} Confiante, honesto, curioso.
+\subsection*{Objetivo da entrevista}
+Não é provar que você sabe Clojure. Eles já viram o currículo. O objetivo é fazer com que saiam pensando: \textit{"esse cara pensa como a gente pensa, resolve o tipo de problema que a gente resolve, e vai comunicar bem com nossos clientes."}
 
-\section*{Parte 2: Percepção do Currículo}
-\textbf{Projeto Independente:} Trabalho deliberado e técnico. \\
-\textbf{XTDB:} "Datomic bitemporal (JUXT)". \\
-\textbf{Go no currículo:} Benchmark de performance/custo. \\
-\textbf{Octopus Pay:} Fullstack completo (Pathom, Clara, Fulcro).
+\subsection*{Sua vantagem real}
+Você tem algo raro: 7 anos de Clojure em produção \textbf{em consultoria}, não em empresa de produto. Isso significa:
+\begin{itemize}
+    \item Você adaptou a mesma stack para domínios completamente diferentes
+    \item Você aprendeu a defender decisões técnicas para clientes não-técnicos
+    \item Você entregou sistemas completos (schema $\to$ UI) com autonomia
+\end{itemize}
 
-\section*{Parte 3: Narrativa de 90s}
-Abre com Clojure/Fullstack/Consultoria. Explica o Ark Engine como laboratório técnico. Termina com desejo de voltar para consultoria em equipe.
+\subsection*{Os três medos do entrevistador}
+Todo entrevistador está inconscientemente verificando:
+\begin{enumerate}
+    \item \textbf{Vai entregar?} — histórico de projetos completos, métricas reais
+    \item \textbf{Vai se comunicar?} — clareza técnica, honestidade sobre gaps
+    \item \textbf{Vai se integrar?} — colaboração, autonomia calibrada, sem ego
+\end{enumerate}
 
-\section*{Parte 4: Respostas Técnicas}
-\textbf{Clojure:} Foco em dados e imutabilidade. \\
-\textbf{Pathom 3:} Desacoplamento e resolução declarativa. \\
-\textbf{Datomic:} Auditabilidade e as-of queries. \\
-\textbf{Clara Rules:} Lógica financeira declarativa. \\
-\textbf{Fulcro RAD:} Produtividade via schemas. \\
-\textbf{Polylith:} Isolamento estrutural de domínios. \\
-\textbf{XTDB:} Bitemporalidade vs Transaction Time. \\
-\textbf{Kafka Gap:} Domínio de padrões (NATS/Redis Streams).
+\subsection*{Tom correto}
+\begin{itemize}
+    \item \textbf{Confiante, não arrogante.} Você tem 7 anos de experiência real.
+    \item \textbf{Honesto sobre gaps, não defensivo.} Kafka — você sabe o que não tem e por quê.
+    \item \textbf{Curioso, não ansioso.} Faça perguntas genuínas.
+\end{itemize}
 
-\section*{Parte 5: Comportamental (STAR)}
-\textbf{Problema difícil:} Migração Pathom 2->3. \\
-\textbf{Discordância:} Defender Datomic por risco de negócio. \\
-\textbf{Cliente errado:} Separar resultado de solução técnica.
+\section*{PARTE 2: O QUE O HUMANO VAI PENSAR}
 
-\section*{Parte 6: Perguntas Difíceis}
-\textbf{Ark Engine lucra?} Infra sólida, faltam dados de microestrutura. \\
-\textbf{Por que saiu?} Foco integral no Ark Engine. \\
-\textbf{Pode trabalhar em equipe?} 7 anos de consultoria provam que sim.
+\textbf{Ao ver "Projeto Independente" no topo (2025-Atual):}
+$\to$ A carta de apresentação já endereça isso. Mencione o Ark Engine como trabalho deliberado e delimitado — não como "o que fiz enquanto procurava emprego".
 
-\section*{Parte 7: Perguntas para o Entrevistador}
-- Desafio técnico atual? \\
-- Ciclo típico de projeto? \\
+\textbf{Ao ver XTDB:}
+$\to$ Explicação em 30s: "É o Datomic com bitemporalidade nativa — mesmo modelo Datalog, criado pela JUXT. A Nubank usa Datomic; XTDB resolve o mesmo problema com uma dimensão a mais de tempo."
+
+\textbf{Ao ver "Consultoria em Software" sem nome de empresa:}
+$\to$ Se perguntarem: "Prefiro não divulgar o nome do cliente por razões de confidencialidade — é o padrão em consultoria."
+
+\textbf{Ao ver Go no currículo de um candidato Clojure:}
+$\to$ Posicione como um \textbf{benchmark deliberado}. "Quis validar até onde o modelo mental funcional de imutabilidade e snapshots (que Clojure facilita) poderia ser levado em termos de latência bruta ($\sim$43$\mu$s) e economia de infraestrutura."
+
+\textbf{Ao ver Octopus Pay (2022-2025) com 7 bullets densos:}
+$\to$ Esteja preparado para detalhar qualquer bullet. Destaque Pathom 3, Clara Rules e Fulcro RAD.
+
+\textbf{Ao ver "Bacharelado em Física" sem conclusão:}
+$\to$ "Migrei para Engenharia de Software em 2024, que é mais alinhado com o que pratico."
+
+\textbf{Ao ver Polylith nas habilidades:}
+$\to$ Diferencial positivo: "Esse cara pensa em arquitetura de verdade."
+
+\textbf{Sobre a Indicação (Leandro):}
+$\to$ Trunfo de credibilidade. Mencione que ele recomendou fortemente a cultura da Buzzlabs.
+
+\section*{PARTE 3: NARRATIVA PESSOAL (90 SEGUNDOS)}
+"Sou engenheiro Clojure/ClojureScript fullstack há 7 anos, todos em consultoria. Cada projeto foi um domínio diferente — gateway de pagamentos, marketplace B2B, motor multi-adquirente — e em todos entregava as duas pontas: do schema Datomic ao componente na tela. De julho de 2025 até agora trabalhei no Ark Engine — infraestrutura de trading algorítmico. Comecei com Clojure/XTDB/Polylith e evoluí para Go para benchmarks de latência extrema, preservando os mesmos princípios funcionais. Agora quero voltar para consultoria, onde produzo melhor em equipe."
+
+\section*{PARTE 4: RESPOSTAS TÉCNICAS EM CAMADAS}
+
+\subsection*{Clojure / Ecossistema}
+\textbf{Experiência:} 7 anos em produção. Pathom 3, Datomic, Clara Rules, Fulcro RAD.
+\textbf{Insights:} Sistemas que duram têm dados como centro, não objetos. Pathom (resolvers), Datomic (schema como dado), Clara (regras como dado).
+
+\textbf{Pathom 3:} Motor de resolução de grafos. Elimina o acoplamento 'de onde vem o dado'. O cliente pede via EQL e o motor descobre o caminho automaticamente. Útil para integrar 25+ gateways (Octopus Pay) de forma canônica.
+
+\textbf{Datomic:} Base Datalog imutável. Escolho quando auditabilidade e evolução de schema são requisitos. \textit{as-of queries} eliminam a necessidade de tabelas de auditoria manuais.
+
+\textbf{Clara Rules:} Motor Rete. Evita 'if-else que virou árvore'. Regras declarativas e testáveis para cálculos complexos (comissão, frete, impostos).
+
+\textbf{Fulcro RAD:} Produtividade via atributos declarativos. Gera forms, reports e routing a partir do schema de domínio.
+
+\textbf{Polylith:} Arquitetura de monorepo com componentes caixa-preta. Elimina acoplamento implícito. Ex: Risk Guard isolado no Ark Engine.
+
+\textbf{XTDB:} Datalog imutável com bitemporalidade nativa (Valid Time vs Transaction Time). Essencial para eliminar \textit{lookahead bias} em trading.
+
+\subsection*{Kafka / Mensageria}
+\textbf{Gap:} Lacuna operacional, não conceitual. Padrões (offsets, consumer groups, exactly-once) implementados via Redis Streams e NATS JetStream. Interesse direto em fechar essa lacuna com Kafka.
+
+\section*{PARTE 5: PERGUNTAS COMPORTAMENTAIS (STAR)}
+\begin{itemize}
+    \item \textbf{Problema Difícil:} Migração Pathom 2 $\to$ 3 em produção sem downtime, mapeando grafo em camadas.
+    \item \textbf{Discordância:} Defender Datomic traduzindo técnica para "risco de negócio" (auditoria financeira).
+    \item \textbf{Cliente Errado:} Separar o resultado desejado da solução técnica proposta e oferecer alternativa viável.
+    \item \textbf{Falha/Atraso:} Integração VTEX (comportamentos não documentados) e como o fix incluiu normalização de erros e testes reais.
+\end{itemize}
+
+\section*{PARTE 6: PERGUNTAS DIFÍCEIS}
+\textbf{Ark Engine lucra?} Infra sólida, falta \textit{edge} de estratégia (próximos passos: funding rate arbitrage).
+\textbf{Por que saiu?} Foco integral no desenvolvimento do Ark Engine.
+\textbf{Trabalho em equipe?} 7 anos de consultoria provam adaptabilidade e colaboração.
+\textbf{Gaps?} Kafka em produção, times maiores, novos domínios.
+
+\section*{PARTE 7: PERGUNTAS PARA O ENTREVISTADOR}
+- Qual projeto mais desafiador hoje? \\
+- Ciclo típico de projeto (proposta $\to$ entrega)? \\
 - Onboarding de novos devs? \\
 - Espaço para Open Source?
 
-\section*{Parte 8: Conceitos para Revisar}
-- Resolvers Pathom, Queries Datalog. \\
-- Atom/Swap, Malli, core.async. \\
-- Transducers, nil-safety.
+\section*{PARTE 8: CONCEITOS PARA REVISAR}
+- Resolver Pathom, Query Datalog básica. \\
+- Atom + swap!, Malli schemas. \\
+- map, reduce, transduce (transducers). \\
+- core.async (chan, go, park vs block).
 
-\section*{Parte 9: Checklist Final}
-- Testar áudio/câmera. \\
-- Declarar interesse no fim. \\
-- E-mail de follow-up em 24h.
-
-\end{multicols}
+\section*{PARTE 9: ARMADILHAS E FECHAMENTO}
+- Não fale mal do cliente anterior. \\
+- Não minimize o Go (foi boa engenharia). \\
+- Não demonstre desespero. \\
+- \textbf{Declare interesse no fim:} "Qual o próximo passo do processo?"
 
 \end{document}
