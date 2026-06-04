@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patrick Serrano — Senior Fullstack Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Tokens: dark high-contrast (default) ── */
+    :root {
+      --bg:          #0d1117;
+      --bg-subtle:   #161b22;
+      --border:      #21262d;
+      --border-muted:#30363d;
+      --text:        #e6edf3;
+      --text-muted:  #8b949e;
+      --accent:      #58a6ff;
+      --tag-bg:      #161b22;
+      --tag-border:  #30363d;
+      --tag-text:    #79c0ff;
+      --quote-border:#388bfd;
+      --strong:      #cdd9e5;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg:          #ffffff;
+        --bg-subtle:   #f6f8fa;
+        --border:      #d0d7de;
+        --border-muted:#d8dee4;
+        --text:        #1f2328;
+        --text-muted:  #656d76;
+        --accent:      #0969da;
+        --tag-bg:      #f6f8fa;
+        --tag-border:  #d0d7de;
+        --tag-text:    #0550ae;
+        --quote-border:#0969da;
+        --strong:      #1f2328;
+      }
+    }
+
+    @media print {
+      :root {
+        --bg:          #ffffff;
+        --bg-subtle:   #ffffff;
+        --border:      #d0d7de;
+        --border-muted:#d0d7de;
+        --text:        #000000;
+        --text-muted:  #444444;
+        --accent:      #0550ae;
+        --tag-bg:      #f6f8fa;
+        --tag-border:  #d0d7de;
+        --tag-text:    #0550ae;
+        --quote-border:#0550ae;
+        --strong:      #000000;
+      }
+      .header-links, footer { display: none; }
+      body { font-size: 11pt; }
+      section { page-break-inside: avoid; }
+    }
+
+    /* ── Reset & base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* ── Header ── */
+    header {
+      text-align: center;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    header .subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .header-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .header-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border: 1px solid var(--border-muted);
+      border-radius: 6px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      background: var(--bg-subtle);
+      transition: border-color 0.15s;
+    }
+
+    .header-links a:hover { border-color: var(--accent); }
+
+    /* ── Summary blockquote ── */
+    blockquote {
+      border-left: 3px solid var(--quote-border);
+      padding: 14px 20px;
+      margin-bottom: 40px;
+      background: var(--bg-subtle);
+      border-radius: 0 6px 6px 0;
+      color: var(--text);
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+
+    /* ── Sections ── */
+    section {
+      margin-bottom: 44px;
+    }
+
+    section h2 {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── Skills table ── */
+    .skills-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+
+    .skills-table tr {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .skills-table tr:last-child {
+      border-bottom: none;
+    }
+
+    .skills-table td {
+      padding: 9px 0;
+      vertical-align: top;
+    }
+
+    .skills-table td:first-child {
+      width: 160px;
+      font-weight: 600;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      padding-right: 16px;
+      white-space: nowrap;
+    }
+
+    /* ── Experience entries ── */
+    .entry {
+      padding: 0 0 32px;
+      margin-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .entry:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .entry-header {
+      margin-bottom: 12px;
+    }
+
+    .entry-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--strong);
+      margin-bottom: 2px;
+    }
+
+    .entry-meta {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .entry-description {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      font-style: italic;
+    }
+
+    .entry ul {
+      padding-left: 18px;
+      margin-bottom: 14px;
+    }
+
+    .entry ul li {
+      font-size: 0.875rem;
+      line-height: 1.65;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .entry ul li strong {
+      color: var(--strong);
+      font-weight: 600;
+    }
+
+    /* ── Tech tags ── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 2px 9px;
+      border: 1px solid var(--tag-border);
+      border-radius: 4px;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      white-space: nowrap;
+    }
+
+    /* ── Details/summary (earlier experience) ── */
+    details {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    summary {
+      padding: 12px 16px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: var(--bg-subtle);
+      color: var(--text);
+      user-select: none;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    summary::before {
+      content: '▶';
+      display: inline-block;
+      margin-right: 8px;
+      font-size: 0.7rem;
+      transition: transform 0.15s;
+    }
+
+    details[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    .details-body {
+      padding: 20px 20px 4px;
+    }
+
+    .details-body .entry {
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+
+    /* ── Education & Languages tables ── */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.875rem;
+    }
+
+    .edu-item:last-child { border-bottom: none; }
+
+    .edu-item .edu-main { font-weight: 500; color: var(--text); }
+    .edu-item .edu-sub  { font-size: 0.8rem; color: var(--text-muted); }
+    .edu-item .edu-date { font-size: 0.8rem; color: var(--text-muted); white-space: nowrap; margin-left: 12px; }
+
+    .lang-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+
+    .lang-table tr { border-bottom: 1px solid var(--border); }
+    .lang-table tr:last-child { border-bottom: none; }
+    .lang-table td { padding: 8px 0; }
+    .lang-table td:first-child { font-weight: 500; width: 120px; }
+    .lang-table td:last-child  { color: var(--text-muted); }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .container { padding: 32px 16px 60px; }
+      header h1  { font-size: 1.6rem; }
+      .skills-table td:first-child { width: 110px; font-size: 0.75rem; }
+      .edu-item  { flex-direction: column; gap: 2px; }
+      .edu-item .edu-date { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ── Header ── -->
+  <header>
+    <h1>Patrick Serrano</h1>
+    <p class="subtitle">Senior Fullstack Engineer</p>
+    <nav class="header-links">
+      <a href="https://linkedin.com/in/patrickcmserrano" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/patrickcmserrano" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a href="mailto:patrickcmserrano@gmail.com">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
+        Email
+      </a>
+    </nav>
+  </header>
+
+  <!-- ── Summary ── -->
+  <blockquote>
+    7+ years building high-throughput financial systems, payment orchestration platforms, and quantitative trading infrastructure. I work across the full stack — from distributed messaging pipelines and bitemporal data models on the backend to reactive desktop and web interfaces on the frontend. My background in Physics sharpened how I reason about systems: precision, invariants, and what happens at the boundary conditions.
+  </blockquote>
+
+  <!-- ── Technical Profile ── -->
+  <section>
+    <h2>Technical Profile</h2>
+    <table class="skills-table">
+      <tr><td>Languages</td><td>Go, Clojure, TypeScript, ClojureScript, Python, SQL</td></tr>
+      <tr><td>Frontend</td><td>Svelte 5, React, Next.js, Fulcro, Reagent, React Native, Wails v2, Tailwind CSS</td></tr>
+      <tr><td>Backend</td><td>Go (Chi, WebSocket), Node.js, NestJS, Fastify, Clojure (Pathom 3, Pedestal, Reitit, Onyx)</td></tr>
+      <tr><td>Databases</td><td>PostgreSQL, Datomic, Redis, DynamoDB, MongoDB</td></tr>
+      <tr><td>Messaging</td><td>NATS JetStream, Kafka, RabbitMQ, AWS SQS, Redis Streams</td></tr>
+      <tr><td>Architecture</td><td>Event-Driven, CQRS, Event Sourcing, Microservices, Clean Architecture, Polylith</td></tr>
+      <tr><td>Infra / DevOps</td><td>AWS (ECS, Lambda, SQS, SSM), Docker, Kubernetes, Pulumi, CI/CD, GitHub Actions</td></tr>
+      <tr><td>Financial Domain</td><td>Payment Gateways (Adyen, Cielo, Pagar.me, Getnet), Anti-Fraud (ClearSale, Konduto), VTEX</td></tr>
+    </table>
+  </section>
+
+  <!-- ── Experience ── -->
+  <section>
+    <h2>Professional Experience</h2>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title">Quantitative Trading Infrastructure — Ark Engine</div>
+        <div class="entry-meta">Lead Architect &amp; Developer &nbsp;·&nbsp; 2025 – Present</div>
+      </div>
+      <p class="entry-description">High-performance automated trading engine with ultra-low latency event processing, bitemporal auditability, and a desktop interface for portfolio management across multiple exchanges.</p>
+      <ul>
+        <li>Redesigned the core decision engine from Python to Go, achieving end-to-end event processing latency of <strong>~43µs</strong></li>
+        <li>Built a multi-exchange data collection pipeline normalized over NATS JetStream, ensuring backtesting and production execute against the same event log</li>
+        <li>Migrated transport layer from HTTP to native IPC, reducing RAM usage by <strong>78%</strong> and cutting streaming latency by <strong>100×</strong></li>
+        <li>Implemented a "dual-store" pattern using XTDB (Valid Time / Transaction Time) to structurally eliminate lookahead bias and guarantee 100% financial auditability</li>
+        <li>Developed high-performance desktop interface with Wails v2 and Svelte 5, streaming live order state via WebSocket; headless collector runs 24/7 on VPS with stateful checkpoint/recovery</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Go 1.23</span>
+        <span class="tag">Svelte 5</span>
+        <span class="tag">Wails v2</span>
+        <span class="tag">NATS JetStream</span>
+        <span class="tag">XTDB</span>
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">WebSocket</span>
+        <span class="tag">Docker</span>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title">Multi-Acquirer Payment Platform — Octopus Pay</div>
+        <div class="entry-meta">Senior Software Engineer &nbsp;·&nbsp; 2022 – 2025</div>
+      </div>
+      <p class="entry-description">High-availability financial orchestration platform managing 25+ live integrations for e-commerce and payment gateways, processing millions of financial events per month.</p>
+      <ul>
+        <li>Architected <strong>Summon</strong>, a high-throughput ETL engine ingesting, enriching, and processing financial events with strict delivery guarantees and circuit-breaker patterns</li>
+        <li>Designed and maintained 25+ canonical adapters for payment gateways (Adyen, Cielo, Pagar.me) and anti-fraud systems, maintaining <strong>99.99% uptime</strong> on critical flows</li>
+        <li>Implemented a transactional-analytical architecture using Datomic (immutable log) and Pathom 3, enabling real-time derivation of hundreds of computed financial attributes via EQL/Datalog</li>
+        <li>Built full-stack administrative dashboards in ClojureScript + Fulcro RAD with direct Datomic/Datalog integration; added operational alerting on routing and approval intelligence</li>
+        <li>Managed cloud infrastructure via Pulumi (AWS) and authored comprehensive test suites — unit, integration, and contract — enforcing correctness-first bug discipline</li>
+        <li>Conducted rigorous code reviews, pair programming sessions, and mentored junior/mid-level engineers on architecture and testing discipline</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Clojure</span>
+        <span class="tag">ClojureScript</span>
+        <span class="tag">Datomic</span>
+        <span class="tag">Pathom 3</span>
+        <span class="tag">Fulcro RAD</span>
+        <span class="tag">Clara Rules</span>
+        <span class="tag">Onyx</span>
+        <span class="tag">AWS</span>
+        <span class="tag">Pulumi</span>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title">B2B Marketplace Platform — Zougue / MPMS</div>
+        <div class="entry-meta">Backend Engineer &nbsp;·&nbsp; 2020 – 2022</div>
+      </div>
+      <p class="entry-description">Enterprise-grade marketplace management platform integrated with major e-commerce ecosystems.</p>
+      <ul>
+        <li>Built complex integration endpoints with VTEX for inventory, pricing, and order management across high-volume SKU updates</li>
+        <li>Developed a white-label marketplace portal with magic-link authentication and per-client Metabase analytics powered by Datalog queries against immutable data history</li>
+        <li>Designed multi-tenant Datomic schemas and Pathom resolvers for multi-seller marketplace queries with real-time computed attributes</li>
+        <li>Implemented forward-chaining business rules in Clara Rules for order routing and financial attribute computation</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Clojure</span>
+        <span class="tag">ClojureScript</span>
+        <span class="tag">Fulcro</span>
+        <span class="tag">Datomic</span>
+        <span class="tag">Pathom 3</span>
+        <span class="tag">Clara Rules</span>
+        <span class="tag">VTEX</span>
+        <span class="tag">Metabase</span>
+      </div>
+    </div>
+
+    <details>
+      <summary>Earlier Experience (2018 – 2019)</summary>
+      <div class="details-body">
+        <div class="entry">
+          <div class="entry-header">
+            <div class="entry-title">Real Estate Platform</div>
+          </div>
+          <p class="entry-description">Full-stack mobile and web application built from scratch for decentralized property listing and negotiation. Iterated continuously on UX based on real user feedback.</p>
+          <div class="tags">
+            <span class="tag">ClojureScript</span>
+            <span class="tag">Fulcro</span>
+            <span class="tag">React Native</span>
+          </div>
+        </div>
+        <div class="entry">
+          <div class="entry-header">
+            <div class="entry-title">Fintech Payment Gateway</div>
+          </div>
+          <p class="entry-description">Front-end development and early financial integrations for a payment gateway startup, establishing foundations in payment flow traceability and security practices.</p>
+          <div class="tags">
+            <span class="tag">ClojureScript</span>
+            <span class="tag">Fulcro</span>
+            <span class="tag">REST APIs</span>
+          </div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ── Education ── -->
+  <section>
+    <h2>Education</h2>
+    <div class="edu-item">
+      <div>
+        <div class="edu-main">Bachelor's in Software Engineering</div>
+        <div class="edu-sub">Descomplica Faculdade Digital</div>
+      </div>
+      <div class="edu-date">2024 – Present</div>
+    </div>
+    <div class="edu-item">
+      <div>
+        <div class="edu-main">Bachelor's in Physics <span style="color:var(--text-muted);font-weight:400">(incomplete)</span></div>
+        <div class="edu-sub">Universidade Federal Fluminense</div>
+      </div>
+      <div class="edu-date">2015 – 2018</div>
+    </div>
+    <div class="edu-item">
+      <div>
+        <div class="edu-main">Full Cycle 3.0</div>
+        <div class="edu-sub">OAuth 2.0, Keycloak, Kafka, Microservices, Hexagonal Architecture, DDD, Kubernetes, Terraform, Observability</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Languages ── -->
+  <section>
+    <h2>Languages</h2>
+    <table class="lang-table">
+      <tr><td>Portuguese</td><td>Native</td></tr>
+      <tr><td>English</td><td>Advanced — Full Professional Fluency</td></tr>
+      <tr><td>German</td><td>Basic</td></tr>
+      <tr><td>Spanish</td><td>Basic</td></tr>
+    </table>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer>
+    Source on <a href="https://github.com/patrickcmserrano/resume" target="_blank" rel="noopener">GitHub</a>
+  </footer>
+
+</div>
+</body>
+</html>

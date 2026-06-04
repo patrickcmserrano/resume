@@ -1,3 +1,5 @@
+> Web version: [patrickcmserrano.github.io/resume](https://patrickcmserrano.github.io/resume/)
+
 <div align="center">
 
 # Patrick Serrano
