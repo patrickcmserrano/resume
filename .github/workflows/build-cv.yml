@@ -1,0 +1,57 @@
+name: Build CV PDFs
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - '_base/**.tex'
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compile PT resume
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: Patrick_Serrano_CV_2026.tex
+          working_directory: _base
+
+      - name: Compile EN resume
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: Patrick_Serrano_CV_EN_2026.tex
+          working_directory: _base
+
+      - name: Upload PDFs as artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: cv-pdfs-${{ github.sha }}
+          path: |
+            _base/Patrick_Serrano_CV_2026.pdf
+            _base/Patrick_Serrano_CV_EN_2026.pdf
+          retention-days: 90
+          if-no-files-found: error
+
+      - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            _base/Patrick_Serrano_CV_2026.pdf
+            _base/Patrick_Serrano_CV_EN_2026.pdf
+          generate_release_notes: false
+          body: |
+            CV PDFs compiled from LaTeX source at `_base/`.
+
+            | File | Language |
+            |---|---|
+            | `Patrick_Serrano_CV_2026.pdf` | Portuguese |
+            | `Patrick_Serrano_CV_EN_2026.pdf` | English |

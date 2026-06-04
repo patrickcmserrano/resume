@@ -18,67 +18,72 @@
 \makecvtitle
 
 \section{Resumo}
-Interrompi o curso de Física na UFF para me tornar desenvolvedor --- não por acidente, mas porque reconheci que construir sistemas com rigor era o que queria fazer de verdade. Sou um Engenheiro Fullstack com sólida base em sistemas financeiros, tendo passado os últimos 7 anos construindo motores de pagamentos e plataformas de orquestração do zero. Minha abordagem une a robustez do backend (Go, Clojure) com a agilidade e interatividade do frontend moderno (TypeScript, Svelte, ClojureScript/Fulcro). Valorizo sistemas onde disponibilidade, resiliência e rastreabilidade são cidadãos de primeira classe, e onde o código é tratado como design colaborativo através de testes rigorosos e code reviews profundos.
+Interrompi o curso de Física na UFF para me tornar desenvolvedor --- não por acidente, mas porque reconheci que construir sistemas com rigor era o que queria fazer de verdade. Passei os últimos 7 anos construindo um motor de pagamentos multi-adquirente do zero --- da modelagem de dados à integração com 25+ gateways financeiros --- sistemas críticos em produção onde disponibilidade, resiliência e rastreabilidade não são opcionais. Hoje estou construindo em Go minha própria plataforma de gestão de patrimônio, o que me fez querer trabalhar em produto onde as decisões de arquitetura têm consequências que você acompanha no dia seguinte. Trabalho melhor em times onde código é discutido antes de ser entregue: testes como documentação executável, code reviews como design colaborativo, abstrações que emergem do problema em vez de preceder ele.
 
 \section{Habilidades}
-\cvitem{Linguagens}{Go, Clojure, TypeScript, ClojureScript, Python, SQL}
-\cvitem{Frontend}{Svelte 5, React, Fulcro, Reagent, shadow-cljs, Tailwind CSS, Wails v2 (Desktop)}
-\cvitem{Backend}{Go (Chi, WebSocket), Clojure (Pathom 3, Clara Rules, Pedestal, Reitit, Onyx), Node.js}
-\cvitem{Banco de Dados}{PostgreSQL, Datomic (Datalog), Redis}
-\cvitem{Arquitetura}{Fullstack Integration, Microservices, Event-Driven, CQRS, Clean Architecture, Polylith}
-\cvitem{Integrações}{Gateways Financeiros (25+), Antifraude, E-commerce (VTEX), Plataformas White-label}
-\cvitem{Infra / DevOps}{AWS (SQS, Lambda, ECS, SSM), Docker, NATS JetStream, Pulumi, CI/CD}
+\cvitem{Ecossistema Clojure}{Pathom 3, Datomic (Datalog), Clara Rules, Malli, Reitit, Pedestal, Onyx, Fulcro RAD, Reagent, shadow-cljs}
+\cvitem{Linguagens}{Go, Clojure, ClojureScript, TypeScript, Python, SQL}
+\cvitem{Frontend}{Svelte 5, React, Fulcro, Reagent, React Native, Wails v2 (Desktop), Tailwind CSS}
+\cvitem{Banco de Dados}{PostgreSQL, Datomic, Redis}
+\cvitem{Mensageria}{NATS JetStream, Onyx, AWS SQS}
+\cvitem{Arquitetura}{Fullstack, Microservices, Event-Driven, CQRS, Clean Architecture, Polylith, ETL Pipelines}
+\cvitem{Integrações}{Gateways: Adyen, Cielo, eRede, Pagar.me, Mercado Pago, Getnet, Tuna, Unico; Antifraude: ClearSale, Konduto; E-commerce: VTEX, Loja Integrada}
+\cvitem{Infra / DevOps}{AWS (SQS, Lambda, ECS, SSM), Docker, Pulumi, CI/CD, Github Actions}
 
 \section{Experiência Profissional}
 
-\cventry{2025 -- Atual}{Plataforma de Gestão de Patrimônio em Cripto}{Projeto Independente}{}{}{%
-Plataforma Fullstack para coleta, processamento e execução de ordens em múltiplas exchanges, com interface desktop de alta performance.
+\cventry{2025 -- Atual}{Plataforma de Gestão de Patrimônio em Cripto (Ark Streams)}{Projeto Independente}{}{}{%
+Plataforma financeira proprietária em Go para coleta, processamento e execução de ordens em múltiplas exchanges, com disponibilidade, resiliência e rastreabilidade como cidadãos de primeira classe.
 \begin{itemize}
-    \item \textbf{Frontend de Alta Performance:} Desenvolvimento de interface desktop usando Wails v2 e Svelte 5, com streaming de dados via WebSocket para visualização de ordens e estado analítico em tempo real;
-    \item \textbf{Disponibilidade e Resiliência:} Coletor headless rodando 24/7 em VPS, com checkpoint de estado para recuperação instantânea e reconexão transparente;
-    \item \textbf{Escalabilidade:} Pipeline multi-exchange com eventos normalizados no barramento NATS JetStream, garantindo que backtest e produção executem sobre a mesma base de eventos;
-    \item \textbf{Otimização de Recursos:} Migração de transporte HTTP para IPC nativo, resultando em 78\% menos uso de RAM e latência 100$\times$ menor em fluxos de streaming.
+    \item \textbf{Disponibilidade por Design:} Coletor headless rodando 24/7 em VPS, com checkpoint periódico de estado e reconexão transparente após quedas de rede --- resiliência projetada desde o início, não adicionada depois;
+    \item \textbf{Escalabilidade:} Pipeline multi-exchange (Bitget, Binance, Bybit, OKX + Yahoo Finance) com eventos normalizados no barramento NATS JetStream --- backtest e produção executam sobre os mesmos eventos por propriedade estrutural;
+    \item \textbf{Performance Medida:} Migração de transporte HTTP para IPC nativo: 70--78\% menos RAM, latência 100$\times$ menor em streaming. Benchmark de pipeline: $\sim$66\,$\mu$s / 100 candles;
+    \item \textbf{Execução Real de Ordens:} Integração com Bitget para ordens reais --- gestão de SL/TP, controles de alavancagem e margem; sinal e execução no mesmo sistema, sem fricção entre análise e ação;
+    \item \textbf{Interface Desktop:} Wails v2 + Svelte 5 com streaming de estado via WebSocket.
 \end{itemize}
-Tecnologias: Go 1.23, Svelte 5, Wails v2, PostgreSQL, NATS JetStream, WebSocket, Docker
+Tecnologias: Go 1.23, Svelte 5, Wails v2, PostgreSQL, NATS JetStream, Chi v5, WebSocket, Docker
 }
 
-\cventry{2022 -- Jul 2025}{Motor de Pagamentos Multi-adquirente}{Consultoria em Software}{}{}{%
-Plataforma de alta disponibilidade para orquestração de pagamentos com 25+ integrações ativas.
+\cventry{2022 -- Jul 2025}{Motor de Pagamentos Multi-adquirente (Octopus Pay)}{Consultoria em Software}{}{}{%
+Plataforma de alta disponibilidade para orquestração de pagamentos com 25+ integrações ativas, processando milhões de eventos financeiros mensais.
 \begin{itemize}%
-    \item \textbf{Arquitetura de Dados:} Design de 25+ adaptadores para gateways (Adyen, Cielo, Pagar.me) e plataformas (VTEX) via modelo canônico EQL/Pathom;
-    \item \textbf{Frontend Administrativo:} Desenvolvimento de dashboards full-stack complexos em ClojureScript + Fulcro RAD com integração direta Datomic/Datalog;
-    \item \textbf{Processamento de Eventos:} Desenvolvimento de motor ETL (Onyx) para processamento de milhões de eventos financeiros mensais;
-    \item \textbf{Rigor Técnico:} Implementação de suíte de testes abrangente (unitários, integração e contratos) com foco em disciplina de correção de bugs guiada por testes;
-    \item \textbf{Infraestrutura como Código:} Gestão de ambiente AWS via Pulumi e automação de pipelines de deploy.
+    \item Design e implementação de 25+ adaptadores para gateways (Adyen, Cielo, eRede, Pagar.me, Mercado Pago, Getnet, Tuna, Unico), plataformas (VTEX, Loja Integrada) e antifraude (ClearSale, Konduto) via modelo canônico EQL/Pathom;
+    \item Desenvolvimento de motor ETL (\textbf{Summon}) para ingestão e processamento de eventos financeiros com garantias de entrega e padrões de circuit breaker via Onyx;
+    \item Liderança da migração Pathom 2 $\rightarrow$ Pathom 3 e derivação de atributos calculados em tempo real com EQL, com disseminação via code reviews e pair programming;
+    \item Desenvolvimento de APIs REST com Reitit + Pedestal, validação Malli e Swagger/OpenAPI;
+    \item Suíte de testes abrangente: unitários de modelos e resolvers Pathom, integração com servidor Pedestal real (fixtures, mocks), contratos de API por rota --- disciplina de criar teste para cada bug corrigido;
+    \item Dashboards full-stack em ClojureScript + Fulcro RAD com integração Datomic/Datalog e alertas operacionais em tempo real;
+    \item Gestão de infraestrutura AWS via Pulumi (IaC) e pipelines de deploy automatizados.
 \end{itemize}
-Tecnologias: Clojure, ClojureScript, Datomic, Pathom 3, Fulcro RAD, Clara Rules, AWS, Pulumi
+Tecnologias: Clojure, ClojureScript, Datomic, Pathom 3, Clara Rules, Fulcro RAD, Reitit, Pedestal, Onyx, AWS, Pulumi
 }
 
-\cventry{2020 -- 2022}{Marketplace B2B & White-label}{Consultoria em Software}{}{}{%
-Gestão de marketplace integrada com ecossistemas de e-commerce de grande porte.
+\cventry{2020 -- 2022}{Marketplace B2B \& White-label (Zougue MPMS)}{Consultoria em Software}{}{}{%
+Gestão de marketplace integrada com VTEX para sellers e operadores em larga escala.
 \begin{itemize}%
-    \item \textbf{Integração de Ecossistemas:} Desenvolvimento de endpoints complexos para simulação de carrinho, estoque e logística integrados à VTEX;
-    \item \textbf{Frontend Multi-tenant:} Desenvolvimento de portal Marketplace white-label com autenticação magic link e integração de analytics (Metabase);
-    \item \textbf{Modelagem de Domínio:} Implementação de regras de negócio em Clara Rules para workflows de roteamento e faturamento;
-    \item \textbf{Interface Administrativa:} Portal de gestão em ClojureScript/Fulcro com filtros dinâmicos de workflow.
+    \item Endpoints de integração VTEX: simulação de carrinho, SKU, preço/estoque, notas fiscais, autorização de despacho;
+    \item Modelagem de esquemas Datomic multi-tenant com Pathom resolvers para queries multi-seller com atributos calculados em tempo real;
+    \item Regras Clara Rules para workflows de roteamento, faturamento e cálculo de price-tags;
+    \item Portal Marketplace white-label com autenticação magic link e analytics Metabase por cliente;
+    \item Portal administrativo em ClojureScript/Fulcro com filtros dinâmicos de workflow.
 \end{itemize}
-Tecnologias: Clojure, ClojureScript, Fulcro, Datomic, Clara Rules, VTEX, Metabase
+Tecnologias: Clojure, ClojureScript, Fulcro, Datomic, Pathom 3, Clara Rules, VTEX, Metabase
 }
 
-\cventry{2018 -- 2019}{Projetos Fullstack Iniciais}{Consultoria em Software}{}{}{%
+\cventry{2018 -- 2019}{Projetos Iniciais (Plataforma Imobiliária · Gateway de Pagamentos)}{Consultoria em Software}{}{}{%
 \begin{itemize}
-    \item \textbf{Mobile \& Web:} Desenvolvimento do zero de aplicação mobile (React Native) e web em ClojureScript/Fulcro para o setor imobiliário;
-    \item \textbf{Financeiro:} Desenvolvimento de frontend e integrações para gateway de pagamentos focado em UX e fluidez de dados.
+    \item Desenvolvimento fullstack de aplicação mobile e web do zero em ClojureScript/Fulcro + React Native (plataforma imobiliária);
+    \item Desenvolvimento de front-end e integrações com sistemas financeiros em ClojureScript/Fulcro para gateway de pagamentos.
 \end{itemize}
 Tecnologias: ClojureScript, Fulcro, React Native, REST APIs
 }
 
 \section{Formação Acadêmica}
 \cventry{2024 -- Atual}{Bacharelado em Engenharia de Software}{Descomplica Faculdade Digital}{}{}{}
-\cventry{2015 -- 2018}{Bacharelado em Física}{Universidade Federal Fluminense}{}{}{}
+\cventry{2015 -- 2018}{Bacharelado em Física (incompleto)}{Universidade Federal Fluminense}{}{}{}
 
 \section{Formação Complementar}
-\cvitem{Full Cycle 3.0}{OAuth 2.0, Keycloak, Kafka, Microsserviços, Arquitetura Hexagonal, DDD, Kubernetes, Terraform, Observabilidade}
+\cvitem{Full Cycle 3.0}{Segurança \& Identidade: OAuth 2.0, OpenID Connect, Keycloak, JWT · Mensageria: EDA, Kafka · Arquitetura: Microsserviços, Hexagonal, Clean Architecture, DDD, SOLID · DevOps: Kubernetes, Terraform, Observabilidade, CI/CD}
 
 \section{Idiomas}
 \cvitemwithcomment{Português}{Nativo}{}
