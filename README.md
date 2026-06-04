@@ -23,13 +23,13 @@
 | Area | Technologies |
 |---|---|
 | **Languages** | Go, Clojure, TypeScript, ClojureScript, Python, SQL |
-| **Frontend** | Svelte 5, React, Next.js, Fulcro, Reagent, React Native, Wails v2, Tailwind CSS |
-| **Backend** | Go (Chi, WebSocket), Node.js, NestJS, Fastify, Clojure (Pathom 3, Pedestal, Reitit, Onyx) |
-| **Databases** | PostgreSQL, Datomic, Redis, DynamoDB, MongoDB |
-| **Messaging** | NATS JetStream, Kafka, RabbitMQ, AWS SQS, Redis Streams |
-| **Architecture** | Event-Driven, CQRS, Event Sourcing, Microservices, Clean Architecture, Polylith |
-| **Infra / DevOps** | AWS (ECS, Lambda, SQS, SSM), Docker, Kubernetes, Pulumi, CI/CD, GitHub Actions |
-| **Financial Domain** | Payment Gateways (Adyen, Cielo, Pagar.me, Getnet), Anti-Fraud (ClearSale, Konduto), VTEX |
+| **Frontend** | Svelte 5, React, Fulcro, Reagent, React Native, Wails v2, Tailwind CSS |
+| **Backend** | Go (Chi, WebSocket), Node.js, Clojure (Pathom 3, Pedestal, Reitit, Onyx) |
+| **Databases** | PostgreSQL, Datomic, Redis |
+| **Messaging** | NATS JetStream, Onyx, AWS SQS |
+| **Architecture** | Event-Driven, CQRS, Microservices, Clean Architecture, Polylith, ETL Pipelines |
+| **Infra / DevOps** | AWS (ECS, Lambda, SQS, SSM), Docker, Pulumi, CI/CD, GitHub Actions |
+| **Financial Domain** | Payment Gateways (Adyen, Cielo, eRede, Pagar.me, Mercado Pago, Getnet, Tuna, Unico), Anti-Fraud (ClearSale, Konduto), E-commerce (VTEX, Loja Integrada) |
 
 ---
 
@@ -38,15 +38,15 @@
 ### Quantitative Trading Infrastructure — Ark Engine
 **Lead Architect & Developer** &nbsp;·&nbsp; 2025 – Present
 
-High-performance automated trading engine with ultra-low latency event processing, bitemporal auditability, and a desktop interface for portfolio management across multiple exchanges.
+Proprietary financial platform in Go for collecting, processing, and executing orders across multiple exchanges — with availability, resilience, and traceability treated as first-class requirements.
 
-- Redesigned the core decision engine from Python to Go, achieving end-to-end event processing latency of **~43µs**
-- Built a multi-exchange data collection pipeline normalized over NATS JetStream, ensuring backtesting and production execute against the same event log
-- Migrated transport layer from HTTP to native IPC, reducing RAM usage by **78%** and cutting streaming latency by **100×**
-- Implemented a "dual-store" pattern using XTDB (Valid Time / Transaction Time) to structurally eliminate lookahead bias and guarantee 100% financial auditability
-- Developed high-performance desktop interface with Wails v2 and Svelte 5, streaming live order state via WebSocket; headless collector runs 24/7 on VPS with stateful checkpoint/recovery
+- Built a multi-exchange pipeline (Bitget, Binance, Bybit, OKX + Yahoo Finance) with normalized events over NATS JetStream — backtesting and production run against the same event log by structural design
+- Designed for availability from day one: headless collector runs 24/7 on VPS with periodic state checkpoint and transparent reconnection after network failures
+- Migrated transport layer from HTTP to native IPC: **70–78% less RAM**, **100× lower streaming latency**; pipeline benchmark **~66µs / 100 candles**
+- Integrated real order execution on Bitget — SL/TP management, leverage and margin controls; signal and execution in the same system, no friction between analysis and action
+- Developed high-performance desktop interface with Wails v2 and Svelte 5, streaming live order state via WebSocket
 
-`Go 1.23` `Svelte 5` `Wails v2` `NATS JetStream` `XTDB` `PostgreSQL` `WebSocket` `Docker`
+`Go 1.23` `Svelte 5` `Wails v2` `NATS JetStream` `PostgreSQL` `WebSocket` `Docker`
 
 ---
 
