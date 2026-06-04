@@ -1,0 +1,89 @@
+\documentclass[10pt,a4paper,sans]{moderncv}
+
+\moderncvstyle{classic}
+\moderncvcolor{blue}
+
+\usepackage[scale=0.82]{geometry}
+\setlength{\hintscolumnwidth}{1.8cm}
+\usepackage{setspace}
+\setstretch{0.78}
+
+\name{Patrick Serrano}{}
+\title{Engenheiro de Software Sênior Fullstack (Go · Clojure · TypeScript)}
+\email{patrickcmserrano@gmail.com}
+\social[linkedin]{patrickcmserrano}
+\social[github]{patrickcmserrano}
+
+\begin{document}
+\makecvtitle
+
+\section{Resumo}
+Interrompi o curso de Física na UFF para me tornar desenvolvedor --- não por acidente, mas porque reconheci que construir sistemas com rigor era o que queria fazer de verdade. Sou um Engenheiro Fullstack com sólida base em sistemas financeiros, tendo passado os últimos 7 anos construindo motores de pagamentos e plataformas de orquestração do zero. Minha abordagem une a robustez do backend (Go, Clojure) com a agilidade e interatividade do frontend moderno (TypeScript, Svelte, ClojureScript/Fulcro). Valorizo sistemas onde disponibilidade, resiliência e rastreabilidade são cidadãos de primeira classe, e onde o código é tratado como design colaborativo através de testes rigorosos e code reviews profundos.
+
+\section{Habilidades}
+\cvitem{Linguagens}{Go, Clojure, TypeScript, ClojureScript, Python, SQL}
+\cvitem{Frontend}{Svelte 5, React, Fulcro, Reagent, shadow-cljs, Tailwind CSS, Wails v2 (Desktop)}
+\cvitem{Backend}{Go (Chi, WebSocket), Clojure (Pathom 3, Clara Rules, Pedestal, Reitit, Onyx), Node.js}
+\cvitem{Banco de Dados}{PostgreSQL, Datomic (Datalog), Redis}
+\cvitem{Arquitetura}{Fullstack Integration, Microservices, Event-Driven, CQRS, Clean Architecture, Polylith}
+\cvitem{Integrações}{Gateways Financeiros (25+), Antifraude, E-commerce (VTEX), Plataformas White-label}
+\cvitem{Infra / DevOps}{AWS (SQS, Lambda, ECS, SSM), Docker, NATS JetStream, Pulumi, CI/CD}
+
+\section{Experiência Profissional}
+
+\cventry{2025 -- Atual}{Plataforma de Gestão de Patrimônio em Cripto}{Projeto Independente}{}{}{%
+Plataforma Fullstack para coleta, processamento e execução de ordens em múltiplas exchanges, com interface desktop de alta performance.
+\begin{itemize}
+    \item \textbf{Frontend de Alta Performance:} Desenvolvimento de interface desktop usando Wails v2 e Svelte 5, com streaming de dados via WebSocket para visualização de ordens e estado analítico em tempo real;
+    \item \textbf{Disponibilidade e Resiliência:} Coletor headless rodando 24/7 em VPS, com checkpoint de estado para recuperação instantânea e reconexão transparente;
+    \item \textbf{Escalabilidade:} Pipeline multi-exchange com eventos normalizados no barramento NATS JetStream, garantindo que backtest e produção executem sobre a mesma base de eventos;
+    \item \textbf{Otimização de Recursos:} Migração de transporte HTTP para IPC nativo, resultando em 78\% menos uso de RAM e latência 100$\times$ menor em fluxos de streaming.
+\end{itemize}
+Tecnologias: Go 1.23, Svelte 5, Wails v2, PostgreSQL, NATS JetStream, WebSocket, Docker
+}
+
+\cventry{2022 -- Jul 2025}{Motor de Pagamentos Multi-adquirente}{Consultoria em Software}{}{}{%
+Plataforma de alta disponibilidade para orquestração de pagamentos com 25+ integrações ativas.
+\begin{itemize}%
+    \item \textbf{Arquitetura de Dados:} Design de 25+ adaptadores para gateways (Adyen, Cielo, Pagar.me) e plataformas (VTEX) via modelo canônico EQL/Pathom;
+    \item \textbf{Frontend Administrativo:} Desenvolvimento de dashboards full-stack complexos em ClojureScript + Fulcro RAD com integração direta Datomic/Datalog;
+    \item \textbf{Processamento de Eventos:} Desenvolvimento de motor ETL (Onyx) para processamento de milhões de eventos financeiros mensais;
+    \item \textbf{Rigor Técnico:} Implementação de suíte de testes abrangente (unitários, integração e contratos) com foco em disciplina de correção de bugs guiada por testes;
+    \item \textbf{Infraestrutura como Código:} Gestão de ambiente AWS via Pulumi e automação de pipelines de deploy.
+\end{itemize}
+Tecnologias: Clojure, ClojureScript, Datomic, Pathom 3, Fulcro RAD, Clara Rules, AWS, Pulumi
+}
+
+\cventry{2020 -- 2022}{Marketplace B2B & White-label}{Consultoria em Software}{}{}{%
+Gestão de marketplace integrada com ecossistemas de e-commerce de grande porte.
+\begin{itemize}%
+    \item \textbf{Integração de Ecossistemas:} Desenvolvimento de endpoints complexos para simulação de carrinho, estoque e logística integrados à VTEX;
+    \item \textbf{Frontend Multi-tenant:} Desenvolvimento de portal Marketplace white-label com autenticação magic link e integração de analytics (Metabase);
+    \item \textbf{Modelagem de Domínio:} Implementação de regras de negócio em Clara Rules para workflows de roteamento e faturamento;
+    \item \textbf{Interface Administrativa:} Portal de gestão em ClojureScript/Fulcro com filtros dinâmicos de workflow.
+\end{itemize}
+Tecnologias: Clojure, ClojureScript, Fulcro, Datomic, Clara Rules, VTEX, Metabase
+}
+
+\cventry{2018 -- 2019}{Projetos Fullstack Iniciais}{Consultoria em Software}{}{}{%
+\begin{itemize}
+    \item \textbf{Mobile \& Web:} Desenvolvimento do zero de aplicação mobile (React Native) e web em ClojureScript/Fulcro para o setor imobiliário;
+    \item \textbf{Financeiro:} Desenvolvimento de frontend e integrações para gateway de pagamentos focado em UX e fluidez de dados.
+\end{itemize}
+Tecnologias: ClojureScript, Fulcro, React Native, REST APIs
+}
+
+\section{Formação Acadêmica}
+\cventry{2024 -- Atual}{Bacharelado em Engenharia de Software}{Descomplica Faculdade Digital}{}{}{}
+\cventry{2015 -- 2018}{Bacharelado em Física}{Universidade Federal Fluminense}{}{}{}
+
+\section{Formação Complementar}
+\cvitem{Full Cycle 3.0}{OAuth 2.0, Keycloak, Kafka, Microsserviços, Arquitetura Hexagonal, DDD, Kubernetes, Terraform, Observabilidade}
+
+\section{Idiomas}
+\cvitemwithcomment{Português}{Nativo}{}
+\cvitemwithcomment{Inglês}{Avançado}{}
+\cvitemwithcomment{Alemão}{Básico}{}
+\cvitemwithcomment{Espanhol}{Básico}{}
+
+\end{document}
