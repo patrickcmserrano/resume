@@ -24,7 +24,8 @@ Interrompi o curso de Física na UFF para me tornar desenvolvedor --- não por a
 \cvitem{Ecossistema Clojure}{Pathom 3, Datomic (Datalog), Clara Rules, Malli, Reitit, Pedestal, Onyx, Fulcro RAD, Reagent, shadow-cljs}
 \cvitem{Linguagens}{Clojure, ClojureScript, Go, TypeScript, Python, SQL}
 \cvitem{Frontend}{Svelte 5, React, Fulcro, Reagent, React Native, Wails v2 (Desktop), Tailwind CSS}
-\cvitem{Banco de Dados}{PostgreSQL, Datomic, Redis}
+\cvitem{Banco de Dados}{PostgreSQL, Datomic, Qdrant, Datahike, Redis}
+\cvitem{IA / LLM}{RAG híbrida (dense + BM25 + RRF), cross-encoder rerank, Claude API, Ollama, NVIDIA NIM (Llama 3.3 70B)}
 \cvitem{Mensageria}{NATS JetStream, Onyx, AWS SQS}
 \cvitem{Arquitetura}{Fullstack, Microservices, Event-Driven, CQRS, Clean Architecture, Polylith, ETL Pipelines}
 \cvitem{Integrações}{Gateways: Adyen, Cielo, eRede, Pagar.me, Mercado Pago, Getnet, Tuna, Unico; Antifraude: ClearSale, Konduto; E-commerce: VTEX, Loja Integrada}
@@ -32,7 +33,19 @@ Interrompi o curso de Física na UFF para me tornar desenvolvedor --- não por a
 
 \section{Experiência Profissional}
 
-\cventry{2025 -- Atual}{Plataforma de Gestão de Patrimônio em Cripto (Ark Streams)}{Projeto Independente}{}{}{%
+\cventry{Jun 2026 -- Atual}{Engine Multi-Tenant de Agentes IA (Rohana / Daelaam)}{Projeto Independente}{}{}{%
+Engine conversacional em Clojure para agentes de IA por tenant, com RAG ancorado nos documentos do próprio negócio, guardrails de horário e isolamento físico LGPD-by-design. Sofia (Clínica Saúde Oral) e Ara (Daelaam) respondem via Telegram em produção.
+\begin{itemize}
+    \item \textbf{Pathom 3 como orquestrador:} cada capability do agente (tenant → intent → guardrail → rag → llm → response) é um resolver independente, com grafo resolvendo apenas o necessário por mensagem;
+    \item \textbf{Isolamento multi-tenant físico:} collection-per-tenant no Qdrant via chokepoint único de nomenclatura --- zero vazamento entre clientes; \texttt{DROP COLLECTION} apaga tudo de um tenant (LGPD por construção);
+    \item \textbf{Pipeline RAG híbrida:} microserviço Python (FastAPI) com hybrid search (dense + BM25 + RRF) e cross-encoder rerank, chamado via POST /query --- escala sem tocar no Clojure;
+    \item \textbf{Zero-code onboarding:} cada tenant é um \texttt{.edn} com persona, guardrails de horário, collection RAG e canais ativos --- deploy automático para VPS via GitHub Actions;
+    \item \textbf{Probe de leads OSM:} scraper OpenStreetMap → qualificação por 5 sinais → alerta Telegram; 88 PMEs validadas em Niterói a zero custo de API.
+\end{itemize}
+Tecnologias: Clojure, Pathom 3, NATS JetStream, Qdrant, FastAPI, NVIDIA NIM, Claude API, Ollama, Datahike, Telegram Bot API
+}
+
+\cventry{Jun 2025 -- Atual}{Plataforma de Gestão de Patrimônio em Cripto (Ark Streams)}{Projeto Independente}{}{}{%
 Plataforma financeira proprietária em Go para coleta, processamento e execução de ordens em múltiplas exchanges, com disponibilidade, resiliência e rastreabilidade como cidadãos de primeira classe.
 \begin{itemize}
     \item \textbf{Disponibilidade por Design:} Coletor headless rodando 24/7 em VPS, com checkpoint periódico de estado e reconexão transparente após quedas de rede --- resiliência projetada desde o início, não adicionada depois;
