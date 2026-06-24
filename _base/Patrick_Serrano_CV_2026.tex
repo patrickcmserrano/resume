@@ -24,7 +24,8 @@ Interrompi o curso de Física na UFF para me tornar desenvolvedor --- não por a
 \cvitem{Ecossistema Clojure}{Pathom 3, Datomic (Datalog), Clara Rules, Malli, Reitit, Pedestal, Onyx, Fulcro RAD, Reagent, shadow-cljs}
 \cvitem{Linguagens}{Go, Clojure, ClojureScript, TypeScript, Python, SQL}
 \cvitem{Frontend}{Svelte 5, React, Fulcro, Reagent, React Native, Wails v2 (Desktop), Tailwind CSS}
-\cvitem{Banco de Dados}{PostgreSQL, Datomic, Redis}
+\cvitem{Banco de Dados}{PostgreSQL, Datomic, Qdrant, Datahike, Redis}
+\cvitem{IA / LLM}{RAG híbrida (dense + BM25 + RRF), cross-encoder rerank, Claude API, Ollama, NVIDIA NIM (Llama 3.3 70B)}
 \cvitem{Mensageria}{NATS JetStream, Onyx, AWS SQS}
 \cvitem{Arquitetura}{Fullstack, Microservices, Event-Driven, CQRS, Clean Architecture, Polylith, ETL Pipelines}
 \cvitem{Integrações}{Gateways: Adyen, Cielo, eRede, Pagar.me, Mercado Pago, Getnet, Tuna, Unico; Antifraude: ClearSale, Konduto; E-commerce: VTEX, Loja Integrada}
@@ -42,6 +43,18 @@ Plataforma financeira proprietária em Go para coleta, processamento e execuçã
     \item \textbf{Interface Desktop:} Wails v2 + Svelte 5 com streaming de estado via WebSocket.
 \end{itemize}
 Tecnologias: Go 1.23, Svelte 5, Wails v2, PostgreSQL, NATS JetStream, Chi v5, WebSocket, Docker
+}
+
+\cventry{2025 -- Atual}{Engine Multi-Tenant de Agentes IA (Rohana / Daelaam)}{Projeto Independente}{}{}{%
+Engine conversacional em Clojure para agentes de IA por tenant, com RAG ancorado nos documentos do próprio negócio, guardrails de horário e isolamento físico LGPD-by-design. A marca comercial é Daelaam; o barramento de mensagens é NATS JetStream (Khala).
+\begin{itemize}
+    \item \textbf{Pathom 3 como orquestrador:} cada capability do agente (tenant → intent → guardrail → rag → functions → llm → response) é um resolver independente --- lazy, composável e testável isoladamente;
+    \item \textbf{Isolamento multi-tenant físico:} collection-per-tenant no Qdrant com um único chokepoint de nomenclatura --- zero possibilidade de vazamento entre clientes; \texttt{DROP COLLECTION} apaga tudo de um tenant (LGPD por construção);
+    \item \textbf{Pipeline RAG híbrida:} microserviço Python (FastAPI) independente com hybrid search (dense + BM25 + RRF) e cross-encoder rerank --- escala e versiona sem tocar no Clojure;
+    \item \textbf{Zero-code onboarding de tenant:} cada cliente é um arquivo \texttt{.edn} com persona, guardrails de horário, collection RAG e canais ativos --- adicionar um tenant não requer deploy;
+    \item \textbf{Probe de leads OSM:} scraper OpenStreetMap → qualificação por 5 sinais de presença digital → alerta Telegram; 88 leads de PMEs validados a zero custo de API.
+\end{itemize}
+Tecnologias: Clojure, Pathom 3, NATS JetStream, Qdrant, FastAPI, Claude API, Ollama, Datahike, Telegram Bot API
 }
 
 \cventry{2022 -- Jul 2025}{Motor de Pagamentos Multi-adquirente (Octopus Pay)}{Consultoria em Software}{}{}{%
