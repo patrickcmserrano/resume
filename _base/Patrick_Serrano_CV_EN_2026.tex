@@ -33,18 +33,6 @@ I dropped out of Physics at UFF to become a developer --- not by accident, but b
 
 \section{Professional Experience}
 
-\cventry{2025 -- Present}{Crypto Asset Management Platform (Ark Streams)}{Independent Project}{}{}{%
-Proprietary financial platform in Go for collecting, processing, and executing orders across multiple exchanges --- with availability, resilience, and traceability treated as first-class requirements from day one.
-\begin{itemize}
-    \item \textbf{Availability by Design:} Headless collector running 24/7 on VPS with periodic state checkpoint and transparent reconnection after network failures --- resilience designed in from the start, not bolted on later;
-    \item \textbf{Scalability:} Multi-exchange pipeline (Bitget, Binance, Bybit, OKX + Yahoo Finance) with normalized events over NATS JetStream --- adding or swapping a source affects nothing downstream; backtesting and production run against the same event log by structural property;
-    \item \textbf{Measured Performance:} HTTP $\rightarrow$ native IPC transport migration: 70--78\% less RAM, 100$\times$ lower streaming latency. Pipeline benchmark: $\sim$66\,$\mu$s / 100 candles;
-    \item \textbf{Real Order Execution:} Bitget integration for live orders --- SL/TP management, leverage and margin controls; signal and execution in the same system, no friction between analysis and action;
-    \item \textbf{Desktop Interface:} Wails v2 + Svelte 5 with live order state streaming via WebSocket.
-\end{itemize}
-Technologies: Go 1.23, Svelte 5, Wails v2, PostgreSQL, NATS JetStream, Chi v5, WebSocket, Docker
-}
-
 \cventry{Jun 2026 -- Present}{Multi-Tenant AI Agent Engine (Rohana / Daelaam)}{Independent Project}{}{}{%
 Conversational AI engine in Clojure for per-tenant agents, with RAG grounded on each client's own documents, schedule guardrails, and LGPD-by-design physical isolation. Sofia (dental clinic) and Ara (Daelaam) are live on Telegram.
 \begin{itemize}
@@ -56,6 +44,20 @@ Conversational AI engine in Clojure for per-tenant agents, with RAG grounded on 
 \end{itemize}
 Technologies: Clojure, Pathom 3, NATS JetStream, Qdrant, FastAPI, NVIDIA NIM, Claude API, Ollama, Datahike, Telegram Bot API
 }
+
+
+\cventry{Jun 2025 -- Present}{Crypto Asset Management Platform (Ark Streams)}{Independent Project}{}{}{%
+Proprietary financial platform in Go for collecting, processing, and executing orders across multiple exchanges --- with availability, resilience, and traceability treated as first-class requirements from day one.
+\begin{itemize}
+    \item \textbf{Availability by Design:} Headless collector running 24/7 on VPS with periodic state checkpoint and transparent reconnection after network failures --- resilience designed in from the start, not bolted on later;
+    \item \textbf{Scalability:} Multi-exchange pipeline (Bitget, Binance, Bybit, OKX + Yahoo Finance) with normalized events over NATS JetStream --- adding or swapping a source affects nothing downstream; backtesting and production run against the same event log by structural property;
+    \item \textbf{Measured Performance:} HTTP $\rightarrow$ native IPC transport migration: 70--78\% less RAM, 100$\times$ lower streaming latency. Pipeline benchmark: $\sim$66\,$\mu$s / 100 candles;
+    \item \textbf{Real Order Execution:} Bitget integration for live orders --- SL/TP management, leverage and margin controls; signal and execution in the same system, no friction between analysis and action;
+    \item \textbf{Desktop Interface:} Wails v2 + Svelte 5 with live order state streaming via WebSocket.
+\end{itemize}
+Technologies: Go 1.23, Svelte 5, Wails v2, PostgreSQL, NATS JetStream, Chi v5, WebSocket, Docker
+}
+
 
 \cventry{2022 -- Jul 2025}{Multi-Acquirer Payment Engine (Octopus Pay)}{Software Consulting}{}{}{%
 High-availability platform for payment orchestration with 25+ live integrations, processing millions of financial events per month.
