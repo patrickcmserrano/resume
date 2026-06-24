@@ -5,6 +5,7 @@ on:
     branches: [master]
     paths:
       - '_base/**.tex'
+      - 'todo/brasilparalelo/**.tex'
     tags:
       - 'v*'
   workflow_dispatch:
@@ -30,6 +31,12 @@ jobs:
           root_file: Patrick_Serrano_CV_EN_2026.tex
           working_directory: _base
 
+      - name: Compile Brasil Paralelo resume
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: Patrick_Serrano_CV_BrasilParalelo_2026.tex
+          working_directory: todo/brasilparalelo
+
       - name: Upload PDFs as artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -37,6 +44,7 @@ jobs:
           path: |
             _base/Patrick_Serrano_CV_2026.pdf
             _base/Patrick_Serrano_CV_EN_2026.pdf
+            todo/brasilparalelo/Patrick_Serrano_CV_BrasilParalelo_2026.pdf
           retention-days: 90
           if-no-files-found: error
 

@@ -118,8 +118,29 @@ Enterprise-grade marketplace management platform integrated with major e-commerc
 
 ---
 
-<div align="center">
+## Project Structure & PDF Generation
 
-*This repository contains the LaTeX source files and compiled PDFs for targeted resume variants.*
+This repository uses a structured directory layout for managing resume versions tailored to different companies and roles.
 
-</div>
+### Project Layout
+- [_base/](file:///home/pace/dev/resume/_base/) — Baseline LaTeX CVs in Portuguese ([Patrick_Serrano_CV_2026.tex](file:///home/pace/dev/resume/_base/Patrick_Serrano_CV_2026.tex)) and English ([Patrick_Serrano_CV_EN_2026.tex](file:///home/pace/dev/resume/_base/Patrick_Serrano_CV_EN_2026.tex)).
+- [in-progress/](file:///home/pace/dev/resume/in-progress/) — Active applications and interview preparation materials (e.g. Arco Educação, Stone, Buzzlabs).
+- [todo/](file:///home/pace/dev/resume/todo/) — Drafts, JD analyses, and target CV files for potential/upcoming candidacies (e.g. Brasil Paralelo, OLX, Globo).
+- [archived/](file:///home/pace/dev/resume/archived/) — Older, unmaintained resume versions.
+
+### How to Compile PDFs Locally
+Because compiling LaTeX requires a large set of TeX packages and engines, you can compile any `.tex` file locally using Docker without needing to install TeX Live on your host system:
+
+1. **Navigate** to the directory containing the `.tex` file you want to compile:
+   ```bash
+   cd todo/brasilparalelo
+   ```
+2. **Run the compiler** inside the `ghcr.io/xu-cheng/texlive-full` Docker container:
+   ```bash
+   docker run --rm -v "$(pwd)":/workdir -w /workdir ghcr.io/xu-cheng/texlive-full pdflatex Patrick_Serrano_CV_BrasilParalelo_2026.tex
+   ```
+   This compiles the `.tex` file and produces the output `.pdf` file in the same directory.
+
+### Automation with GitHub Actions
+When you push changes on the `master` branch to GitHub, the configured Actions workflow (defined in [.github/workflows/build-cv.yml](file:///home/pace/dev/resume/.github/workflows/build-cv.yml)) automatically compiles the configured `.tex` resume files and uploads them as workflow build artifacts.
+
