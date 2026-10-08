@@ -18,20 +18,33 @@
 \makecvtitle
 
 \section{Resumo}
-Interrompi o curso de Física na UFF para me tornar desenvolvedor --- não por acidente, mas porque reconheci que construir sistemas com rigor era o que queria fazer de verdade. Passei os últimos 7 anos construindo um motor de pagamentos multi-adquirente do zero --- da modelagem de dados à integração com 25+ gateways financeiros --- sistemas críticos em produção onde disponibilidade, resiliência e rastreabilidade não são opcionais. Hoje estou construindo em Go minha própria plataforma de gestão de patrimônio, o que me fez querer trabalhar em produto onde as decisões de arquitetura têm consequências que você acompanha no dia seguinte. Trabalho melhor em times onde código é discutido antes de ser entregue: testes como documentação executável, code reviews como design colaborativo, abstrações que emergem do problema em vez de preceder ele.
+Interrompi o curso de Física na UFF para me tornar desenvolvedor --- não por acidente, mas porque reconheci que construir sistemas com rigor era o que queria fazer de verdade. Passei os últimos 7 anos construindo um motor de pagamentos multi-adquirente do zero --- da modelagem de dados à integração com 25+ gateways financeiros --- sistemas críticos em produção onde disponibilidade, resiliência e rastreabilidade não são opcionais. Mais recentemente venho construindo infraestrutura de IA corporativa: roteamento e serving sob demanda de LLMs (Go, Clojure, Slurm, vLLM), pipelines de agentes e RAG ancorado com governança e auditoria. Também desenvolvo em Go minha própria plataforma de gestão de patrimônio, o que me fez querer trabalhar em produto onde as decisões de arquitetura têm consequências que você acompanha no dia seguinte. Trabalho melhor em times onde código é discutido antes de ser entregue: testes como documentação executável, code reviews como design colaborativo, abstrações que emergem do problema em vez de preceder ele.
 
 \section{Habilidades}
 \cvitem{Ecossistema Clojure}{Pathom 3, Datomic (Datalog), Clara Rules, Malli, Reitit, Pedestal, Onyx, Fulcro RAD, Reagent, shadow-cljs}
 \cvitem{Linguagens}{Go, Clojure, ClojureScript, TypeScript, Python, SQL}
 \cvitem{Frontend}{Svelte 5, React, Fulcro, Reagent, React Native, Wails v2 (Desktop), Tailwind CSS}
 \cvitem{Banco de Dados}{PostgreSQL, Datomic, Qdrant, Datahike, Redis}
-\cvitem{IA / LLM}{RAG híbrida (dense + BM25 + RRF), cross-encoder rerank, Claude API, Ollama, NVIDIA NIM (Llama 3.3 70B)}
+\cvitem{IA / LLM}{Orquestração de LLM (routing, fallback, circuit breaker), serving sob demanda (vLLM/Slurm, tensor-parallel, NVFP4), RAG híbrida (dense + BM25 + RRF), cross-encoder rerank, Claude API, Ollama, NVIDIA NIM (Llama 3.3 70B)}
 \cvitem{Mensageria}{NATS JetStream, Onyx, AWS SQS}
 \cvitem{Arquitetura}{Fullstack, Microservices, Event-Driven, CQRS, Clean Architecture, Polylith, ETL Pipelines}
 \cvitem{Integrações}{Gateways: Adyen, Cielo, eRede, Pagar.me, Mercado Pago, Getnet, Tuna, Unico; Antifraude: ClearSale, Konduto; E-commerce: VTEX, Loja Integrada}
-\cvitem{Infra / DevOps}{AWS (SQS, Lambda, ECS, SSM), Docker, Pulumi, CI/CD, Github Actions}
+\cvitem{Infra / DevOps}{AWS (SQS, Lambda, ECS, SSM), FreeBSD (jails VNET, ZFS, pf), Slurm, WireGuard, OpenTofu/Terraform, Ansible, Docker, Pulumi, CI/CD, GitHub Actions, Prometheus}
 
 \section{Experiência Profissional}
+
+\cventry{Jul 2026 -- Atual}{Plataforma de IA Corporativa e Fábrica de Agentes (NeoTek / AI Factory)}{Parceria técnica $\cdot$ cliente do setor de inovação}{}{}{%
+Infraestrutura de engenharia assistida por agentes em parceria com Ian Fernandez (NeoTek MaaS Industries): um control loop que une contexto, roteamento de modelos e execução, com agentes em workspaces isolados e auditáveis. Sustenta em produção um portal corporativo de chat com LLM (RAG, SSO e isolamento por usuário) entregue a um cliente do setor de inovação.
+\begin{itemize}
+    \item \textbf{Router de inferência multi-provider (Go):} endpoint único OpenAI-compatível sobre múltiplos modelos (frota própria em GPU + serverless/Fireworks), com políticas de roteamento declarativas, cadeias de fallback, retry com backoff+jitter e circuit breaker por provider --- testado ao vivo contra a API real;
+    \item \textbf{Serving de LLM em GPU sob demanda (Clojure + Slurm + vLLM):} catálogo que só publica o modelo que respondeu a um request real; upgrade vLLM 0.26$\to$0.28 cortou o TTFT de 0,43\,s para 0,02\,s ($-95\%$); roteamento tensor-parallel de 2 nós em DGX Spark (NVFP4, NCCL/RoCE) e placement fixo por nó (ADR-0037) para eliminar thrash de eviction;
+    \item \textbf{Pipeline agêntico observe/plan/act/verify (Clojure):} orquestrador multi-role (planner $\to$ implementer $\to$ tests $\to$ reviewer $\to$ gate), camada declarativa de roles e workspace policy com audit hook --- 815 testes / 3104 assertions verdes;
+    \item \textbf{Segurança e conformidade comprovadas por E2E:} trilha de auditoria imutável (hash encadeado SHA-256, endpoint de verificação de integridade), stop chain fail-closed, egress allowlist e redação de PII (Presidio + OpenMed) --- com vídeos de evidência e RBAC validado ponta a ponta;
+    \item \textbf{Infra como código:} OpenTofu + Ansible em FreeBSD com jails VNET, rede WireGuard (relay público por peer, VPN overlay para o cluster Slurm) e pf deny-by-default; provisioning reprodutível e deploy verificável;
+    \item \textbf{Observabilidade e custo:} telemetria de custo do parque de computação (coletor de potência via nvidia-smi + GPU-hours via Slurm $\to$ agregador), metrics Prometheus e dashboard de operações embarcado; \textbf{context-graph-engine} (Go) indexa repositórios deterministicamente para alimentar os agentes com o contexto relevante.
+\end{itemize}
+Tecnologias: Go, Clojure, ClojureScript, FreeBSD, Slurm, vLLM, WireGuard, OpenTofu, Ansible, Open WebUI, Keycloak/LDAP (OIDC), Qdrant, Prometheus, Docker, GraalVM
+}
 
 \cventry{2025 -- Atual}{Plataforma de Gestão de Patrimônio em Cripto (Ark Streams)}{Projeto Independente}{}{}{%
 Plataforma financeira proprietária em Go para coleta, processamento e execução de ordens em múltiplas exchanges, com disponibilidade, resiliência e rastreabilidade como cidadãos de primeira classe.

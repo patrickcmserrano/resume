@@ -1,4 +1,4 @@
-> Web version: [patrickcmserrano.github.io/resume](https://patrickcmserrano.github.io/resume/)
+> Web version: [patrickcmserrano.github.io/resume/](https://patrickcmserrano.github.io/resume/)
 
 <div align="center">
 
@@ -14,7 +14,7 @@
 
 ---
 
-> 7+ years building high-throughput financial systems, payment orchestration platforms, and quantitative trading infrastructure. I work across the full stack — from distributed messaging pipelines and bitemporal data models on the backend to reactive desktop and web interfaces on the frontend. My background in Physics sharpened how I reason about systems: precision, invariants, and what happens at the boundary conditions.
+> 7+ years building high-throughput financial systems, payment orchestration platforms, and quantitative trading infrastructure. More recently I have been building corporate AI infrastructure: LLM routing and on-demand serving (Go, Clojure, Slurm, vLLM), agent pipelines, and grounded RAG with governance and auditing. My background in Physics sharpened how I reason about systems: precision, invariants, and what happens at the boundary conditions.
 
 ---
 
@@ -27,13 +27,30 @@
 | **Backend** | Go (Chi, WebSocket), Node.js, Clojure (Pathom 3, Pedestal, Reitit, Onyx) |
 | **Databases** | PostgreSQL, Datomic, Redis |
 | **Messaging** | NATS JetStream, Onyx, AWS SQS |
+| **AI / LLM** | LLM orchestration (routing, fallback, circuit breaking), on-demand serving (vLLM/Slurm, tensor-parallel, NVFP4), hybrid RAG (dense + BM25 + RRF), cross-encoder rerank, Claude API, Ollama, NVIDIA NIM |
 | **Architecture** | Event-Driven, CQRS, Microservices, Clean Architecture, Polylith, ETL Pipelines |
-| **Infra / DevOps** | AWS (ECS, Lambda, SQS, SSM), Docker, Pulumi, CI/CD, GitHub Actions |
+| **Infra / DevOps** | AWS (ECS, Lambda, SQS, SSM), FreeBSD (VNET jails, ZFS, pf), Slurm, WireGuard, OpenTofu/Terraform, Ansible, Docker, Pulumi, CI/CD, GitHub Actions, Prometheus |
 | **Financial Domain** | Payment Gateways (Adyen, Cielo, eRede, Pagar.me, Mercado Pago, Getnet, Tuna, Unico), Anti-Fraud (ClearSale, Konduto), E-commerce (VTEX, Loja Integrada) |
 
 ---
 
 ## Professional Experience
+
+### Corporate AI Platform & Agent Factory — NeoTek / AI Factory
+**Technical Partnership · innovation-sector client** &nbsp;·&nbsp; 2026 – Present
+
+Agent-assisted engineering infrastructure built in partnership with Ian Fernandez (NeoTek MaaS Industries): a control loop joining context, model routing, and execution, with agents operating in isolated, auditable workspaces. Sustains in production a corporate LLM chat portal (RAG, SSO, and per-user isolation) delivered to an innovation-sector client.
+
+- Built a multi-provider inference router in Go — a single OpenAI-compatible endpoint over multiple models (own GPU fleet + serverless), with declarative routing policies, fallback chains, retry with backoff+jitter, and per-provider circuit breaking
+- Delivered on-demand LLM serving on GPU (Clojure + Slurm + vLLM): a vLLM 0.26→0.28 upgrade cut **TTFT from 0.43s to 0.02s (−95%)**; two-node tensor-parallel serving on DGX Spark with fixed per-node placement to eliminate eviction thrash
+- Built the observe/plan/act/verify agent pipeline (Clojure): multi-role orchestrator (planner → implementer → tests → reviewer → gate) with a declarative agent-role layer — **815 tests / 3104 assertions**
+- Proved security and compliance end to end: immutable audit trail (SHA-256 chained hash, integrity-verification endpoint), fail-closed stop chain, egress allowlist, and PII redaction
+- Ran Infrastructure as Code on FreeBSD: OpenTofu + Ansible, VNET jails, WireGuard networking, and deny-by-default pf — reproducible provisioning and verifiable deploys
+- Added compute-estate cost telemetry (power collector + Slurm GPU-hours → aggregator), Prometheus metrics, and an embedded operations dashboard
+
+`Go` `Clojure` `ClojureScript` `FreeBSD` `Slurm` `vLLM` `WireGuard` `OpenTofu` `Ansible` `Open WebUI` `Qdrant` `Prometheus` `Docker`
+
+---
 
 ### Quantitative Trading Infrastructure — Ark Engine
 **Lead Architect & Developer** &nbsp;·&nbsp; 2025 – Present
@@ -101,7 +118,7 @@ Enterprise-grade marketplace management platform integrated with major e-commerc
 
 **Bachelor's in Software Engineering** — Descomplica Faculdade Digital &nbsp;·&nbsp; 2024 – Present
 
-**Bachelor's in Physics** (incomplete) — Universidade Federal Fluminense &nbsp;·&nbsp; 2015 – 2018
+**Bachelor's in Physics (incomplete)** — Universidade Federal Fluminense &nbsp;·&nbsp; 2015 – 2018
 
 **Full Cycle 3.0** — OAuth 2.0, Keycloak, Kafka, Microservices, Hexagonal Architecture, DDD, Kubernetes, Terraform, Observability
 
@@ -123,10 +140,17 @@ Enterprise-grade marketplace management platform integrated with major e-commerc
 This repository uses a structured directory layout for managing resume versions tailored to different companies and roles.
 
 ### Project Layout
-- [_base/](file:///home/pace/dev/resume/_base/) — Baseline LaTeX CVs in Portuguese ([Patrick_Serrano_CV_2026.tex](file:///home/pace/dev/resume/_base/Patrick_Serrano_CV_2026.tex)) and English ([Patrick_Serrano_CV_EN_2026.tex](file:///home/pace/dev/resume/_base/Patrick_Serrano_CV_EN_2026.tex)).
-- [in-progress/](file:///home/pace/dev/resume/in-progress/) — Active applications and interview preparation materials (e.g. Arco Educação, Stone, Buzzlabs).
-- [todo/](file:///home/pace/dev/resume/todo/) — Drafts, JD analyses, and target CV files for potential/upcoming candidacies (e.g. Brasil Paralelo, OLX, Globo).
-- [archived/](file:///home/pace/dev/resume/archived/) — Older, unmaintained resume versions.
+- [_base/](_base/) — Baseline LaTeX CVs in Portuguese ([Patrick_Serrano_CV_2026.tex](_base/Patrick_Serrano_CV_2026.tex)) and English ([Patrick_Serrano_CV_EN_2026.tex](_base/Patrick_Serrano_CV_EN_2026.tex)).
+- [in-progress/](in-progress/) — Active applications and interview preparation materials (e.g. Arco Educação, Stone, Buzzlabs).
+- [todo/](todo/) — Drafts, JD analyses, and target CV files for potential/upcoming candidacies (e.g. Brasil Paralelo, OLX, Globo).
+- [archived/](archived/) — Older, unmaintained resume versions.
+
+### Source of Truth
+- [resume.yaml](resume.yaml) is the single source of truth for the web version ([index.html](index.html)) and [README.md](README.md).
+- Regenerate them with:
+  ```bash
+  python3 build.py
+  ```
 
 ### How to Compile PDFs Locally
 Because compiling LaTeX requires a large set of TeX packages and engines, you can compile any `.tex` file locally using Docker without needing to install TeX Live on your host system:
@@ -142,5 +166,5 @@ Because compiling LaTeX requires a large set of TeX packages and engines, you ca
    This compiles the `.tex` file and produces the output `.pdf` file in the same directory.
 
 ### Automation with GitHub Actions
-When you push changes on the `master` branch to GitHub, the configured Actions workflow (defined in [.github/workflows/build-cv.yml](file:///home/pace/dev/resume/.github/workflows/build-cv.yml)) automatically compiles the configured `.tex` resume files and uploads them as workflow build artifacts.
+When you push changes on the `master` branch to GitHub, the configured Actions workflow (defined in [.github/workflows/build-cv.yml](.github/workflows/build-cv.yml)) automatically compiles the configured `.tex` resume files and uploads them as workflow build artifacts.
 

@@ -1,0 +1,339 @@
+    /* ── Tokens: dark high-contrast (default) ── */
+    :root {
+      --bg:          #0d1117;
+      --bg-subtle:   #161b22;
+      --border:      #21262d;
+      --border-muted:#30363d;
+      --text:        #e6edf3;
+      --text-muted:  #8b949e;
+      --accent:      #58a6ff;
+      --tag-bg:      #161b22;
+      --tag-border:  #30363d;
+      --tag-text:    #79c0ff;
+      --quote-border:#388bfd;
+      --strong:      #cdd9e5;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg:          #ffffff;
+        --bg-subtle:   #f6f8fa;
+        --border:      #d0d7de;
+        --border-muted:#d8dee4;
+        --text:        #1f2328;
+        --text-muted:  #656d76;
+        --accent:      #0969da;
+        --tag-bg:      #f6f8fa;
+        --tag-border:  #d0d7de;
+        --tag-text:    #0550ae;
+        --quote-border:#0969da;
+        --strong:      #1f2328;
+      }
+    }
+
+    @media print {
+      :root {
+        --bg:          #ffffff;
+        --bg-subtle:   #ffffff;
+        --border:      #d0d7de;
+        --border-muted:#d0d7de;
+        --text:        #000000;
+        --text-muted:  #444444;
+        --accent:      #0550ae;
+        --tag-bg:      #f6f8fa;
+        --tag-border:  #d0d7de;
+        --tag-text:    #0550ae;
+        --quote-border:#0550ae;
+        --strong:      #000000;
+      }
+      .header-links, footer { display: none; }
+      body { font-size: 11pt; }
+      section { page-break-inside: avoid; }
+    }
+
+    /* ── Reset & base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* ── Header ── */
+    header {
+      text-align: center;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    header .subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .header-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .header-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border: 1px solid var(--border-muted);
+      border-radius: 6px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      background: var(--bg-subtle);
+      transition: border-color 0.15s;
+    }
+
+    .header-links a:hover { border-color: var(--accent); }
+
+    /* ── Summary blockquote ── */
+    blockquote {
+      border-left: 3px solid var(--quote-border);
+      padding: 14px 20px;
+      margin-bottom: 40px;
+      background: var(--bg-subtle);
+      border-radius: 0 6px 6px 0;
+      color: var(--text);
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+
+    /* ── Sections ── */
+    section {
+      margin-bottom: 44px;
+    }
+
+    section h2 {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── Skills table ── */
+    .skills-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+
+    .skills-table tr {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .skills-table tr:last-child {
+      border-bottom: none;
+    }
+
+    .skills-table td {
+      padding: 9px 0;
+      vertical-align: top;
+    }
+
+    .skills-table td:first-child {
+      width: 160px;
+      font-weight: 600;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      padding-right: 16px;
+      white-space: nowrap;
+    }
+
+    /* ── Experience entries ── */
+    .entry {
+      padding: 0 0 32px;
+      margin-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .entry:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .entry-header {
+      margin-bottom: 12px;
+    }
+
+    .entry-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--strong);
+      margin-bottom: 2px;
+    }
+
+    .entry-meta {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .entry-description {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      font-style: italic;
+    }
+
+    .entry ul {
+      padding-left: 18px;
+      margin-bottom: 14px;
+    }
+
+    .entry ul li {
+      font-size: 0.875rem;
+      line-height: 1.65;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .entry ul li strong {
+      color: var(--strong);
+      font-weight: 600;
+    }
+
+    /* ── Tech tags ── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 2px 9px;
+      border: 1px solid var(--tag-border);
+      border-radius: 4px;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      white-space: nowrap;
+    }
+
+    /* ── Details/summary (earlier experience) ── */
+    details {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    summary {
+      padding: 12px 16px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: var(--bg-subtle);
+      color: var(--text);
+      user-select: none;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    summary::before {
+      content: '▶';
+      display: inline-block;
+      margin-right: 8px;
+      font-size: 0.7rem;
+      transition: transform 0.15s;
+    }
+
+    details[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    .details-body {
+      padding: 20px 20px 4px;
+    }
+
+    .details-body .entry {
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+
+    /* ── Education & Languages tables ── */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.875rem;
+    }
+
+    .edu-item:last-child { border-bottom: none; }
+
+    .edu-item .edu-main { font-weight: 500; color: var(--text); }
+    .edu-item .edu-sub  { font-size: 0.8rem; color: var(--text-muted); }
+    .edu-item .edu-date { font-size: 0.8rem; color: var(--text-muted); white-space: nowrap; margin-left: 12px; }
+
+    .lang-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+
+    .lang-table tr { border-bottom: 1px solid var(--border); }
+    .lang-table tr:last-child { border-bottom: none; }
+    .lang-table td { padding: 8px 0; }
+    .lang-table td:first-child { font-weight: 500; width: 120px; }
+    .lang-table td:last-child  { color: var(--text-muted); }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .container { padding: 32px 16px 60px; }
+      header h1  { font-size: 1.6rem; }
+      .skills-table td:first-child { width: 110px; font-size: 0.75rem; }
+      .edu-item  { flex-direction: column; gap: 2px; }
+      .edu-item .edu-date { margin-left: 0; }
+    }
+  

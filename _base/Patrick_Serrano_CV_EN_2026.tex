@@ -18,20 +18,33 @@
 \makecvtitle
 
 \section{Summary}
-I dropped out of Physics at UFF to become a developer --- not by accident, but because I recognized that building systems with rigor was what I truly wanted to do. I have spent the last 7 years building a multi-acquirer payment engine from scratch --- from data modeling to integrating 25+ financial gateways --- production-critical systems where availability, resilience, and traceability are non-negotiable. Today I am building my own asset management platform in Go, which made me want to work on product where architectural decisions have consequences you can observe the next day. I work best on teams where code is discussed before it is delivered: tests as executable documentation, code reviews as collaborative design, abstractions that emerge from the problem rather than precede it.
+I dropped out of Physics at UFF to become a developer --- not by accident, but because I recognized that building systems with rigor was what I truly wanted to do. I have spent the last 7 years building a multi-acquirer payment engine from scratch --- from data modeling to integrating 25+ financial gateways --- production-critical systems where availability, resilience, and traceability are non-negotiable. More recently I have been building corporate AI infrastructure: LLM routing and on-demand serving (Go, Clojure, Slurm, vLLM), agent pipelines, and grounded RAG with governance and auditing. I also build my own asset management platform in Go, which made me want to work on product where architectural decisions have consequences you can observe the next day. I work best on teams where code is discussed before it is delivered: tests as executable documentation, code reviews as collaborative design, abstractions that emerge from the problem rather than precede it.
 
 \section{Skills}
 \cvitem{Clojure Ecosystem}{Pathom 3, Datomic (Datalog), Clara Rules, Malli, Reitit, Pedestal, Onyx, Fulcro RAD, Reagent, shadow-cljs}
 \cvitem{Languages}{Go, Clojure, ClojureScript, TypeScript, Python, SQL}
 \cvitem{Frontend}{Svelte 5, React, Fulcro, Reagent, React Native, Wails v2 (Desktop), Tailwind CSS}
 \cvitem{Databases}{PostgreSQL, Datomic, Qdrant, Datahike, Redis}
-\cvitem{AI / LLM}{Hybrid RAG (dense + BM25 + RRF), cross-encoder rerank, Claude API, Ollama, NVIDIA NIM (Llama 3.3 70B)}
+\cvitem{AI / LLM}{LLM orchestration (routing, fallback, circuit breaking), on-demand serving (vLLM/Slurm, tensor-parallel, NVFP4), hybrid RAG (dense + BM25 + RRF), cross-encoder rerank, Claude API, Ollama, NVIDIA NIM (Llama 3.3 70B)}
 \cvitem{Messaging}{NATS JetStream, Onyx, AWS SQS}
 \cvitem{Architecture}{Fullstack, Microservices, Event-Driven, CQRS, Clean Architecture, Polylith, ETL Pipelines}
 \cvitem{Integrations}{Gateways: Adyen, Cielo, eRede, Pagar.me, Mercado Pago, Getnet, Tuna, Unico; Anti-Fraud: ClearSale, Konduto; E-commerce: VTEX, Loja Integrada}
-\cvitem{Infra / DevOps}{AWS (SQS, Lambda, ECS, SSM), Docker, Pulumi, CI/CD, GitHub Actions}
+\cvitem{Infra / DevOps}{AWS (SQS, Lambda, ECS, SSM), FreeBSD (VNET jails, ZFS, pf), Slurm, WireGuard, OpenTofu/Terraform, Ansible, Docker, Pulumi, CI/CD, GitHub Actions, Prometheus}
 
 \section{Professional Experience}
+
+\cventry{Jul 2026 -- Present}{Corporate AI Platform \& Agent Factory (NeoTek / AI Factory)}{Technical Partnership $\cdot$ innovation-sector client}{}{}{%
+Agent-assisted engineering infrastructure built in partnership with Ian Fernandez (NeoTek MaaS Industries): a control loop joining context, model routing, and execution, with agents operating in isolated, auditable workspaces. Sustains in production a corporate LLM chat portal (RAG, SSO, and per-user isolation) delivered to an innovation-sector client.
+\begin{itemize}
+    \item \textbf{Multi-provider inference router (Go):} single OpenAI-compatible endpoint over multiple models (own GPU fleet + serverless/Fireworks), with declarative routing policies, fallback chains, retry with backoff+jitter, and per-provider circuit breaking --- live-tested against the real API;
+    \item \textbf{On-demand LLM serving on GPU (Clojure + Slurm + vLLM):} a catalog that publishes only the model that answered a real request; vLLM 0.26$\to$0.28 upgrade cut TTFT from 0.43\,s to 0.02\,s ($-95\%$); two-node tensor-parallel serving on DGX Spark (NVFP4, NCCL/RoCE) and fixed per-node placement (ADR-0037) to eliminate eviction thrash;
+    \item \textbf{Observe/plan/act/verify agent pipeline (Clojure):} multi-role orchestrator (planner $\to$ implementer $\to$ tests $\to$ reviewer $\to$ gate), declarative agent-role layer, and workspace policy with an audit hook --- 815 tests / 3104 assertions green;
+    \item \textbf{Security \& compliance proven by E2E:} immutable audit trail (SHA-256 chained hash, integrity-verification endpoint), fail-closed stop chain, egress allowlist, and PII redaction (Presidio + OpenMed) --- with recorded video evidence and end-to-end validated RBAC;
+    \item \textbf{Infrastructure as code:} OpenTofu + Ansible on FreeBSD with VNET jails, WireGuard networking (public per-peer relay, overlay VPN for the Slurm cluster), and deny-by-default pf; reproducible provisioning and verifiable deploys;
+    \item \textbf{Observability \& cost:} compute-estate cost telemetry (power collector via nvidia-smi + Slurm GPU-hours $\to$ aggregator), Prometheus metrics, and an embedded operations dashboard; \textbf{context-graph-engine} (Go) deterministically indexes repositories to feed agents the relevant context.
+\end{itemize}
+Technologies: Go, Clojure, ClojureScript, FreeBSD, Slurm, vLLM, WireGuard, OpenTofu, Ansible, Open WebUI, Keycloak/LDAP (OIDC), Qdrant, Prometheus, Docker, GraalVM
+}
 
 \cventry{Jun 2026 -- Present}{Multi-Tenant AI Agent Engine (Rohana / Daelaam)}{Independent Project}{}{}{%
 Conversational AI engine in Clojure for per-tenant agents, with RAG grounded on each client's own documents, schedule guardrails, and LGPD-by-design physical isolation. Sofia (dental clinic) and Ara (Daelaam) are live on Telegram.

@@ -6,11 +6,40 @@ on:
     paths:
       - '_base/**.tex'
       - 'todo/brasilparalelo/**.tex'
+      - 'resume.yaml'
+      - 'build.py'
+      - 'assets/**.css'
+      - 'index.html'
+      - 'README.md'
     tags:
       - 'v*'
   workflow_dispatch:
 
 jobs:
+  check-generated:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install PyYAML
+        run: pip install pyyaml
+
+      - name: Regenerate web version from resume.yaml
+        run: python3 build.py
+
+      - name: Fail if index.html / README.md are out of sync with resume.yaml
+        run: |
+          if ! git diff --quiet -- index.html README.md; then
+            echo "::error::index.html or README.md is out of sync with resume.yaml. Run 'python3 build.py' and commit the result."
+            git --no-pager diff -- index.html README.md
+            exit 1
+          fi
+
   build:
     runs-on: ubuntu-latest
     permissions:
