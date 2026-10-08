@@ -40,6 +40,9 @@ jobs:
             exit 1
           fi
 
+      - name: Fail if the web and LaTeX sources diverge
+        run: python3 consistency.py
+
   build:
     runs-on: ubuntu-latest
     permissions:

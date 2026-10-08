@@ -430,7 +430,34 @@
 
     <div class="entry">
       <div class="entry-header">
-        <div class="entry-title">Quantitative Trading Infrastructure — Ark Engine</div>
+        <div class="entry-title">Multi-Tenant AI Agent Engine — Rohana / Daelaam</div>
+        <div class="entry-meta">Independent Project &nbsp;·&nbsp; 2026 – Present</div>
+      </div>
+      <p class="entry-description">Conversational AI engine in Clojure for per-tenant agents, with RAG grounded on each client's own documents, schedule guardrails, and LGPD-by-design physical isolation. Sofia (dental clinic) and Ara (Daelaam) are live on Telegram.</p>
+      <ul>
+        <li><strong>Pathom 3 as orchestrator:</strong> each agent capability (tenant → intent → guardrail → rag → llm → response) is an independent resolver — the graph resolves only what each message needs</li>
+        <li><strong>Physical multi-tenant isolation:</strong> collection-per-tenant in Qdrant via a single naming chokepoint — zero cross-client data leakage; DROP COLLECTION erases all data for a tenant (LGPD by construction)</li>
+        <li><strong>Hybrid RAG pipeline:</strong> standalone Python microservice (FastAPI) with hybrid search (dense + BM25 + RRF) and cross-encoder rerank, called via POST /query — scales independently without touching Clojure</li>
+        <li><strong>Zero-code tenant onboarding:</strong> each client is a single .edn file with persona, schedule guardrails, RAG collection, and active channels — automated deploy to VPS via GitHub Actions</li>
+        <li><strong>OSM lead Probe:</strong> OpenStreetMap scraper → 5-signal digital presence score → Telegram alert; 88 SMB leads validated in Niterói at zero API cost</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Clojure</span>
+        <span class="tag">Pathom 3</span>
+        <span class="tag">NATS JetStream</span>
+        <span class="tag">Qdrant</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">NVIDIA NIM</span>
+        <span class="tag">Claude API</span>
+        <span class="tag">Ollama</span>
+        <span class="tag">Datahike</span>
+        <span class="tag">Telegram Bot API</span>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title">Quantitative Trading Infrastructure — Ark Streams</div>
         <div class="entry-meta">Lead Architect &amp; Developer &nbsp;·&nbsp; 2025 – Present</div>
       </div>
       <p class="entry-description">Proprietary financial platform in Go for collecting, processing, and executing orders across multiple exchanges — with availability, resilience, and traceability treated as first-class requirements.</p>

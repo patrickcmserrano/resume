@@ -43,6 +43,11 @@ This repository uses a structured directory layout for managing resume versions 
   ```bash
   python3 build.py
   ```
+- Check that the web source (`resume.yaml`) and the LaTeX sources (`_base/*.tex`) list the same experience entries:
+  ```bash
+  python3 consistency.py
+  ```
+  Both checks run in CI (job `check-generated`) and fail the build if the sources drift.
 
 ### How to Compile PDFs Locally
 Because compiling LaTeX requires a large set of TeX packages and engines, you can compile any `.tex` file locally using Docker without needing to install TeX Live on your host system:

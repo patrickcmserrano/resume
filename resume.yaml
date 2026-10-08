@@ -77,7 +77,40 @@ experience:
         aggregator), Prometheus metrics, and an embedded operations dashboard
     tags: [Go, Clojure, ClojureScript, FreeBSD, Slurm, vLLM, WireGuard, OpenTofu, Ansible, Open WebUI, Qdrant, Prometheus, Docker]
 
-  - title: Quantitative Trading Infrastructure — Ark Engine
+  - title: Multi-Tenant AI Agent Engine — Rohana / Daelaam
+    role: Independent Project
+    date: 2026 – Present
+    description: >-
+      Conversational AI engine in Clojure for per-tenant agents, with RAG
+      grounded on each client's own documents, schedule guardrails, and
+      LGPD-by-design physical isolation. Sofia (dental clinic) and Ara (Daelaam)
+      are live on Telegram.
+    bullets:
+      - >-
+        <strong>Pathom 3 as orchestrator:</strong> each agent capability
+        (tenant → intent → guardrail → rag → llm → response) is an independent
+        resolver — the graph resolves only what each message needs
+      - >-
+        <strong>Physical multi-tenant isolation:</strong> collection-per-tenant
+        in Qdrant via a single naming chokepoint — zero cross-client data
+        leakage; DROP COLLECTION erases all data for a tenant (LGPD by
+        construction)
+      - >-
+        <strong>Hybrid RAG pipeline:</strong> standalone Python microservice
+        (FastAPI) with hybrid search (dense + BM25 + RRF) and cross-encoder
+        rerank, called via POST /query — scales independently without touching
+        Clojure
+      - >-
+        <strong>Zero-code tenant onboarding:</strong> each client is a single
+        .edn file with persona, schedule guardrails, RAG collection, and active
+        channels — automated deploy to VPS via GitHub Actions
+      - >-
+        <strong>OSM lead Probe:</strong> OpenStreetMap scraper → 5-signal
+        digital presence score → Telegram alert; 88 SMB leads validated in
+        Niterói at zero API cost
+    tags: [Clojure, Pathom 3, NATS JetStream, Qdrant, FastAPI, NVIDIA NIM, Claude API, Ollama, Datahike, Telegram Bot API]
+
+  - title: Quantitative Trading Infrastructure — Ark Streams
     role: Lead Architect & Developer
     date: 2025 – Present
     description: >-

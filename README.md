@@ -52,7 +52,22 @@ Agent-assisted engineering infrastructure built in partnership with Ian Fernande
 
 ---
 
-### Quantitative Trading Infrastructure — Ark Engine
+### Multi-Tenant AI Agent Engine — Rohana / Daelaam
+**Independent Project** &nbsp;·&nbsp; 2026 – Present
+
+Conversational AI engine in Clojure for per-tenant agents, with RAG grounded on each client's own documents, schedule guardrails, and LGPD-by-design physical isolation. Sofia (dental clinic) and Ara (Daelaam) are live on Telegram.
+
+- **Pathom 3 as orchestrator:** each agent capability (tenant → intent → guardrail → rag → llm → response) is an independent resolver — the graph resolves only what each message needs
+- **Physical multi-tenant isolation:** collection-per-tenant in Qdrant via a single naming chokepoint — zero cross-client data leakage; DROP COLLECTION erases all data for a tenant (LGPD by construction)
+- **Hybrid RAG pipeline:** standalone Python microservice (FastAPI) with hybrid search (dense + BM25 + RRF) and cross-encoder rerank, called via POST /query — scales independently without touching Clojure
+- **Zero-code tenant onboarding:** each client is a single .edn file with persona, schedule guardrails, RAG collection, and active channels — automated deploy to VPS via GitHub Actions
+- **OSM lead Probe:** OpenStreetMap scraper → 5-signal digital presence score → Telegram alert; 88 SMB leads validated in Niterói at zero API cost
+
+`Clojure` `Pathom 3` `NATS JetStream` `Qdrant` `FastAPI` `NVIDIA NIM` `Claude API` `Ollama` `Datahike` `Telegram Bot API`
+
+---
+
+### Quantitative Trading Infrastructure — Ark Streams
 **Lead Architect & Developer** &nbsp;·&nbsp; 2025 – Present
 
 Proprietary financial platform in Go for collecting, processing, and executing orders across multiple exchanges — with availability, resilience, and traceability treated as first-class requirements.
@@ -151,6 +166,11 @@ This repository uses a structured directory layout for managing resume versions 
   ```bash
   python3 build.py
   ```
+- Check that the web source (`resume.yaml`) and the LaTeX sources (`_base/*.tex`) list the same experience entries:
+  ```bash
+  python3 consistency.py
+  ```
+  Both checks run in CI (job `check-generated`) and fail the build if the sources drift.
 
 ### How to Compile PDFs Locally
 Because compiling LaTeX requires a large set of TeX packages and engines, you can compile any `.tex` file locally using Docker without needing to install TeX Live on your host system:
