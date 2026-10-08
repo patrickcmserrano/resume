@@ -83,23 +83,30 @@ experience:
     description: >-
       Conversational AI engine in Clojure for per-tenant agents, with RAG
       grounded on each client's own documents, schedule guardrails, and
-      LGPD-by-design physical isolation. Sofia (dental clinic) and Ara (Daelaam)
-      are live on Telegram.
+      LGPD-by-design physical isolation. Channels are WhatsApp and Telegram; the
+      full pipeline is validated end to end (webhook → message bus → Pathom graph
+      → response).
     bullets:
       - >-
         <strong>Pathom 3 as orchestrator:</strong> each agent capability
         (tenant → intent → guardrail → rag → llm → response) is an independent
         resolver — the graph resolves only what each message needs
       - >-
-        <strong>Physical multi-tenant isolation:</strong> collection-per-tenant
-        in Qdrant via a single naming chokepoint — zero cross-client data
-        leakage; DROP COLLECTION erases all data for a tenant (LGPD by
-        construction)
+        <strong>Physical multi-tenant isolation:</strong> a dedicated vector
+        index per tenant (TurboVec in-process via libpython-clj; Qdrant as an
+        alternative provider) with the tenant id stamped by the store and
+        validated fail-closed on every search — zero cross-client leakage
+        (LGPD by construction)
       - >-
-        <strong>Hybrid RAG pipeline:</strong> standalone Python microservice
-        (FastAPI) with hybrid search (dense + BM25 + RRF) and cross-encoder
-        rerank, called via POST /query — scales independently without touching
-        Clojure
+        <strong>Fail-closed privacy gate:</strong> every LLM call is scrubbed by
+        Presidio (pt-BR NLP analyzer + anonymizer); ingestion sanitizes before
+        embedding, and any component being unavailable refuses the operation
+        rather than leaking
+      - >-
+        <strong>Message bus &amp; grounding:</strong> migrated the event bus from
+        NATS JetStream to an embedded Aeron media driver (IPC), and grounding is
+        only marked true when the answer cites a real retrieved source — not when
+        it merely avoids the refusal phrase
       - >-
         <strong>Zero-code tenant onboarding:</strong> each client is a single
         .edn file with persona, schedule guardrails, RAG collection, and active
@@ -108,36 +115,50 @@ experience:
         <strong>OSM lead Probe:</strong> OpenStreetMap scraper → 5-signal
         digital presence score → Telegram alert; 88 SMB leads validated in
         Niterói at zero API cost
-    tags: [Clojure, Pathom 3, NATS JetStream, Qdrant, FastAPI, NVIDIA NIM, Claude API, Ollama, Datahike, Telegram Bot API]
+    tags: [Clojure, Pathom 3, Aeron, TurboVec, Qdrant, NATS JetStream, Presidio, FastAPI, Claude API, NVIDIA NIM, Ollama, Datahike, Telegram Bot API]
 
-  - title: Quantitative Trading Infrastructure — Ark Streams
+  - title: Algorithmic Trading Platform — Ark
     role: Lead Architect & Developer
-    date: 2025 – Present
+    date: 2025 – 2026
     description: >-
-      Proprietary financial platform in Go for collecting, processing, and
-      executing orders across multiple exchanges — with availability,
-      resilience, and traceability treated as first-class requirements.
+      Proprietary event-driven trading platform spanning research, live market
+      data, strategy, and order execution — built as a Clojure/Polylith
+      foundation (bitemporal risk engine) and later re-implemented in Go, with
+      availability, resilience, and traceability as first-class requirements.
     bullets:
       - >-
-        Built a multi-exchange pipeline (Bitget, Binance, Bybit, OKX + Yahoo
-        Finance) with normalized events over NATS JetStream — backtesting and
-        production run against the same event log by structural design
+        <strong>Risk engine as code ("constitution"):</strong> hard stops in
+        BigDecimal for drawdown, leverage, position size and data staleness,
+        expressed as pure components and verified with generative tests
+        (test.check) — bitemporal history persisted in XTDB for exact
+        time-travel reconstruction
       - >-
-        Designed for availability from day one: headless collector runs 24/7 on
-        VPS with periodic state checkpoint and transparent reconnection after
-        network failures
+        <strong>Clojure → Go re-architecture:</strong> migrated a Clojure/Polylith
+        system (XTDB + Redis Streams) to a single Go binary on NATS JetStream,
+        keeping the same event-driven, immutable-log principles while removing the
+        JVM and broker footprint
       - >-
-        Migrated transport layer from HTTP to native IPC: <strong>70–78% less
-        RAM</strong>, <strong>100× lower streaming latency</strong>; pipeline
-        benchmark <strong>~66µs / 100 candles</strong>
+        <strong>Multi-exchange pipeline:</strong> Bitget, OKX and Bybit (plus
+        Yahoo Finance macro) normalized onto one NATS JetStream event log —
+        backtesting and live paper trading run against the same events by
+        structural design
       - >-
-        Integrated real order execution on Bitget — SL/TP management, leverage
-        and margin controls; signal and execution in the same system, no
-        friction between analysis and action
+        <strong>Measured performance:</strong> HTTP → native IPC transport
+        migration cut streaming latency ~<strong>100×</strong> (~100–200µs → ~1µs)
+        and desktop memory usage <strong>70–78%</strong>; indicator pipeline
+        benchmark <strong>~66µs / 100 candles</strong> (scaling linearly to 0.7ms
+        at 1000)
       - >-
-        Developed high-performance desktop interface with Wails v2 and Svelte 5,
-        streaming live order state via WebSocket
-    tags: [Go 1.23, Svelte 5, Wails v2, NATS JetStream, PostgreSQL, WebSocket, Docker]
+        <strong>Order execution on Bitget:</strong> signed REST adapter
+        (place/close, SL/TP, leverage and margin-mode) behind a RiskGuard with a
+        kill-switch and reconciliation, running in shadow/paper mode gated by
+        pre-registered validation criteria
+      - >-
+        <strong>Desktop terminal:</strong> Wails v2 + Svelte 5 with a Go↔frontend
+        IPC bridge, real-time streaming of market, aggression and liquidation
+        data, and multi-symbol/multi-monitor layouts — released as v1.2.1 with CI
+        (Gitleaks, Go build/test, frontend build)
+    tags: [Go, Clojure, ClojureScript, Polylith, XTDB, NATS JetStream, Redis Streams, Wails v2, Svelte 5, Chi, Malli, Prometheus, Docker]
 
   - title: Multi-Acquirer Payment Platform — Octopus Pay
     role: Senior Software Engineer

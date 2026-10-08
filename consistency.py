@@ -30,7 +30,7 @@ CANON = [
     # (slug, rótulo, substrings que identificam a entrada em cada título)
     ("neotek", "NeoTek / AI Factory", ["NeoTek", "AI Factory"]),
     ("rohana", "Rohana / Daelaam", ["Rohana", "Daelaam"]),
-    ("ark", "Ark Streams", ["Ark Streams", "Ark Engine"]),
+    ("ark", "Ark", ["Ark Streams", "Ark Engine", "— Ark", "(Ark)"]),
     ("octopus", "Octopus Pay", ["Octopus Pay"]),
     ("zougue", "Zougue / MPMS", ["Zougue", "MPMS"]),
 ]
